@@ -1,0 +1,65 @@
+<header class="cabecera">
+  <p class="parte">Anexo</p>
+  <h1>Glosario y fuentes</h1>
+  <p class="entradilla">Los términos técnicos que aparecen en el plan, explicados en una línea, y las fuentes en las que nos hemos apoyado.</p>
+  <ul class="indice-pagina">
+    <li><a href="#glosario">Glosario</a></li>
+    <li><a href="#fuentes">Fuentes</a></li>
+    <li><a href="#supuestos">Supuestos del equipo</a></li>
+  </ul>
+</header>
+
+<section class="seccion" id="glosario">
+  <h2>Glosario</h2>
+  <div class="tabla">
+    <table>
+      <thead>
+        <tr><th scope="col">Término</th><th scope="col">Qué significa</th><th scope="col">En TextiConect</th></tr>
+      </thead>
+      <tbody>
+        <tr><th scope="row"><span class="et et--it">IT</span> Tecnologías de la información</th><td>Sistemas que gestionan datos y comunicaciones de la empresa.</td><td>Pedidos, clientes, inventario, facturas</td></tr>
+        <tr><th scope="row"><span class="et et--ot">OT</span> Tecnologías de la operación</th><td>Sistemas y equipos que vigilan o controlan procesos físicos.</td><td>Máquinas de impresión y bordado</td></tr>
+        <tr><th scope="row">Convergencia IT-OT</th><td>Integrar los dos entornos para que compartan datos.</td><td>El pedido baja al taller y el avance sube a la oficina</td></tr>
+        <tr><th scope="row">ERP</th><td>Programa que reúne la gestión de toda la empresa en una base de datos.</td><td><span class="cod cod--it">IT1</span></td></tr>
+        <tr><th scope="row">MES</th><td>Programa que dirige y registra la producción en planta en tiempo real.</td><td>Lo sustituye el módulo de fabricación del ERP</td></tr>
+        <tr><th scope="row">En la nube</th><td>El programa funciona en servidores del proveedor y se usa por internet.</td><td>Sin servidor propio ni técnico en plantilla</td></tr>
+        <tr><th scope="row">Código QR</th><td>Código impreso que una cámara lee al instante.</td><td>Identifica cada orden y cada caja <span class="cod cod--ot">OT1</span> <span class="cod cod--ot">OT3</span></td></tr>
+        <tr><th scope="row">Orden de fabricación</th><td>Instrucción de producir algo concreto: qué, cuánto y para cuándo.</td><td>Lo que baja de IT a OT</td></tr>
+        <tr><th scope="row">Cuadro de mando</th><td>Pantalla con los indicadores clave de la empresa.</td><td><span class="cod cod--it">IT4</span></td></tr>
+        <tr><th scope="row">Indicador</th><td>Cifra que resume cómo va algo y permite compararlo en el tiempo.</td><td>Por ejemplo, porcentaje de pedidos entregados en fecha</td></tr>
+        <tr><th scope="row">Data-Driven</th><td>Forma de trabajar en la que las decisiones se apoyan en datos medidos.</td><td>Capturar, integrar, analizar y decidir</td></tr>
+        <tr><th scope="row">Segmentación de red</th><td>Separar la red en zonas para que un problema en una no pase a otra.</td><td><span class="cod cod--ot">OT4</span></td></tr>
+      </tbody>
+    </table>
+  </div>
+</section>
+
+<section class="seccion" id="fuentes">
+  <h2>Fuentes</h2>
+  <ul class="refs">
+    <li>Enunciado de la actividad: “Caso práctico: Digitalización y Convergencia IT/OT en TextiConect”.<em>De ahí salen todos los datos de la empresa.</em></li>
+    <li>INCIBE-CERT (2018). <a href="https://www.incibe.es/incibe-cert/blog/convergencia-ti">Convergencia TI-TO</a>.<em>Diferencias entre IT y OT, beneficios, riesgos y recomendación de separar redes.</em></li>
+    <li>INCIBE-CERT (2018). <a href="https://www.incibe.es/incibe-cert/blog/ti-y-somos-amigos">TI y TO, ¿ya somos amigos?</a><em>Importancia del factor cultural en la convergencia.</em></li>
+    <li>NIST, Computer Security Resource Center. <a href="https://csrc.nist.gov/glossary/term/operational_technology">Glossary: operational technology</a>.<em>Definición de OT.</em></li>
+    <li>Rockwell Automation. <a href="https://rockwellautomation.com/es-es/products/software/factorytalk/operationsuite/mes/mes-vs-erp.html">MES vs. ERP</a>.<em>Diferencia entre los dos tipos de sistema.</em></li>
+    <li>Odoo. <a href="https://www.odoo.com/es/app/manufacturing">Aplicación de fabricación</a>.<em>Ejemplo de ERP modular en la nube con módulo de fabricación.</em></li>
+  </ul>
+</section>
+
+<section class="seccion" id="supuestos">
+  <h2>Supuestos del equipo</h2>
+  <p>El caso es breve, así que para concretar el plan hemos añadido algunos datos. Los reunimos aquí para que no se confundan con el enunciado.</p>
+  <div class="tabla">
+    <table>
+      <thead>
+        <tr><th scope="col">Supuesto</th><th scope="col">Dónde se usa</th><th scope="col">Por qué lo añadimos</th></tr>
+      </thead>
+      <tbody>
+        <tr><td>Reparto de las 12 personas: 5 en oficina y 7 en taller</td><td><a href="2-it-ot.html#plano">Punto 2</a> y <a href="5-impacto.html#puestos">Punto 5</a></td><td>Para explicar cómo cambia cada puesto</td></tr>
+        <tr><td>La web básica no está enlazada con pedidos ni con producción</td><td><a href="1-diagnostico.html#detalle">Punto 1</a>, problema P6</td><td>El caso la cita como un canal más de entrada, sin otra función</td></tr>
+        <tr><td>Calendario de nueve meses en cuatro fases</td><td><a href="3-propuesta.html#fases">Punto 3</a></td><td>Para ordenar las tecnologías y justificar la secuencia</td></tr>
+        <tr><td>Pedido de 120 sudaderas bordadas</td><td><a href="6-situacion.html">Punto 6</a></td><td>Para seguir un caso concreto de principio a fin</td></tr>
+      </tbody>
+    </table>
+  </div>
+</section>

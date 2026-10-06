@@ -1,0 +1,103 @@
+<header class="cabecera">
+  <p class="parte">Punto 6</p>
+  <h1>Situación práctica</h1>
+  <p class="entradilla">Un cliente importante pide dos cosas: personalizar sus pedidos online y recibir información actualizada del estado de la producción. Con el plan implantado, las dos salen de las mismas piezas.</p>
+  <ul class="indice-pagina">
+    <li><a href="#peticion">Qué pide y qué lo responde</a></li>
+    <li><a href="#recorrido">El pedido paso a paso</a></li>
+    <li><a href="#demo">Lo que ve el cliente</a></li>
+    <li><a href="#hoy">Qué pasaría hoy</a></li>
+  </ul>
+</header>
+
+<section class="seccion" id="peticion">
+  <h2>Qué pide el cliente y qué parte del plan lo responde</h2>
+  <div class="tabla">
+    <table>
+      <thead>
+        <tr><th scope="col">Lo que pide</th><th scope="col">Qué hace falta</th><th scope="col">Tecnologías del plan</th></tr>
+      </thead>
+      <tbody>
+        <tr><th scope="row">Personalizar sus pedidos online</th><td>Una web donde elegir prenda, tallas y cantidades, subir el logotipo, ver el resultado y repetir pedidos anteriores.</td><td><span class="cod cod--it">IT2</span> tienda con personalizador y área de cliente, sobre <span class="cod cod--it">IT1</span></td></tr>
+        <tr><th scope="row">Recibir información actualizada del estado de la producción</th><td>Que el taller registre el avance real y que ese dato llegue solo hasta el cliente.</td><td><span class="cod cod--ot">OT1</span> escaneo en el puesto, <span class="cod cod--ot">OT2</span> máquinas conectadas, <span class="cod cod--it">IT3</span> avisos</td></tr>
+      </tbody>
+    </table>
+  </div>
+  <div class="decision">
+    <h4>La idea clave</h4>
+    <p>La primera petición es solo IT. La segunda es imposible sin OT: la web puede enseñar el estado, pero el estado nace en el taller. Por eso este caso solo se resuelve combinando los dos entornos.</p>
+  </div>
+</section>
+
+<section class="seccion" id="recorrido">
+  <h2>El pedido, paso a paso</h2>
+  <p>Seguimos un pedido de ejemplo: una empresa encarga 120 sudaderas con su logotipo bordado.</p>
+  <div class="tabla tabla--ancha">
+    <table>
+      <thead>
+        <tr><th scope="col">Paso</th><th scope="col">Qué ocurre</th><th scope="col">Entorno</th><th scope="col">Qué lo hace posible</th></tr>
+      </thead>
+      <tbody>
+        <tr><th scope="row">1. Personaliza</th><td>El cliente entra en su área, elige sudadera, tallas y cantidad, sube el logotipo y ve una prueba en pantalla.</td><td><span class="et et--it">IT</span></td><td><span class="cod cod--it">IT2</span></td></tr>
+        <tr><th scope="row">2. Se registra</th><td>El pedido entra en el sistema sin que nadie lo copie. Se comprueba que hay prendas y se reservan.</td><td><span class="et et--it">IT</span></td><td><span class="cod cod--it">IT1</span></td></tr>
+        <tr><th scope="row">3. Se compromete una fecha</th><td>El sistema propone la entrega según los trabajos que ya hay en cola.</td><td><span class="et et--it">IT</span></td><td><span class="cod cod--it">IT1</span> con datos de <span class="cod cod--ot">OT1</span></td></tr>
+        <tr><th scope="row">4. Baja al taller</th><td>Se genera la orden con su código QR. Aparece en la tableta de bordado y el diseño llega a la máquina.</td><td><span class="et et--mix">IT → OT</span></td><td><span class="cod cod--ot">OT1</span> <span class="cod cod--ot">OT2</span></td></tr>
+        <tr><th scope="row">5. Se fabrica</th><td>El operario escanea al empezar. La máquina cuenta las unidades bordadas.</td><td><span class="et et--ot">OT</span></td><td><span class="cod cod--ot">OT1</span> <span class="cod cod--ot">OT2</span></td></tr>
+        <tr><th scope="row">6. Sube el estado</th><td>Cada avance actualiza el área de cliente y dispara un aviso en los cambios de fase.</td><td><span class="et et--mix">OT → IT</span></td><td><span class="cod cod--it">IT3</span></td></tr>
+        <tr><th scope="row">7. Se revisa y se envía</th><td>Acabado marca las unidades correctas. Almacén escanea la salida y se emite la factura.</td><td><span class="et et--mix">OT → IT</span></td><td><span class="cod cod--ot">OT3</span> <span class="cod cod--it">IT1</span></td></tr>
+      </tbody>
+    </table>
+  </div>
+  <p class="fuente">Elaboración propia. El pedido de 120 sudaderas es un ejemplo inventado para ilustrar el recorrido.</p>
+</section>
+
+<section class="seccion" id="demo">
+  <h2>Lo que vería el cliente</h2>
+  <p>Pulsa el botón para avanzar el pedido. A la izquierda aparece lo que lee el cliente; a la derecha, de dónde sale ese dato.</p>
+
+  <div class="seguimiento" id="seguimiento">
+    <div class="seguimiento__barra"><strong>Área de cliente de TextiConect</strong><span>Pedido de ejemplo: 120 sudaderas bordadas</span></div>
+    <div class="seguimiento__cuerpo">
+      <ol class="hitos-seg" aria-label="Estados del pedido"></ol>
+      <div class="seguimiento__estado" aria-live="polite">
+        <div class="seguimiento__cliente">
+          <h4>Lo que ve el cliente</h4>
+          <p><strong data-campo="titulo"></strong><span data-campo="cliente"></span></p>
+        </div>
+        <div class="seguimiento__origen">
+          <h4>De dónde sale el dato <span data-campo="entorno"></span></h4>
+          <p data-campo="origen"></p>
+        </div>
+      </div>
+      <div class="seguimiento__botones">
+        <button class="boton" type="button" data-accion="siguiente">Avanzar al siguiente estado</button>
+        <button class="boton boton--sec" type="button" data-accion="reiniciar">Volver al principio</button>
+      </div>
+    </div>
+  </div>
+  <p class="fuente">Demostración hecha por el equipo. No es un sistema real: simula los mensajes que generaría el plan.</p>
+</section>
+
+<section class="seccion" id="hoy">
+  <h2>Qué pasaría hoy con esa misma petición</h2>
+  <div class="balanza">
+    <div>
+      <h3>Con el plan</h3>
+      <ul>
+        <li><strong>Personalización</strong><span>El cliente la hace solo y ve el resultado antes de pagar.</span></li>
+        <li><strong>Estado de la producción</strong><span>Se actualiza con cada escaneo y cada dato de máquina.</span></li>
+        <li><strong>Esfuerzo interno</strong><span>Nadie copia, llama ni escribe correos de estado.</span></li>
+        <li><strong>Para el cliente importante</strong><span>Puede repetir pedidos con un clic y tener varios en curso a la vez.</span></li>
+      </ul>
+    </div>
+    <div>
+      <h3>Hoy</h3>
+      <ul>
+        <li><strong>Personalización</strong><span>Por correo o teléfono, con idas y vueltas para aclarar el diseño.</span></li>
+        <li><strong>Estado de la producción</strong><span>Comercial tendría que llamar al taller cada vez que el cliente pregunte.</span></li>
+        <li><strong>Esfuerzo interno</strong><span>Una persona dedicada a perseguir el pedido y a informar a mano.</span></li>
+        <li><strong>Para el cliente importante</strong><span>Riesgo real de perderlo si otro proveedor sí le da seguimiento.</span></li>
+      </ul>
+    </div>
+  </div>
+</section>

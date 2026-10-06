@@ -1,0 +1,117 @@
+<header class="cabecera">
+  <p class="parte">Punto 7</p>
+  <h1>Ciclo Data-Driven</h1>
+  <p class="entradilla">Una empresa guiada por datos decide con lo que mide, no con lo que recuerda. En TextiConect el ciclo tiene cuatro pasos y se repite con cada pedido.</p>
+  <ul class="indice-pagina">
+    <li><a href="#ciclo">El ciclo</a></li>
+    <li><a href="#capturar">1. Capturar</a></li>
+    <li><a href="#integrar">2. Integrar</a></li>
+    <li><a href="#analizar">3. Analizar</a></li>
+    <li><a href="#decidir">4. Decidir y actuar</a></li>
+  </ul>
+</header>
+
+<section class="seccion" id="ciclo">
+  <h2>El ciclo aplicado a TextiConect</h2>
+  <ol class="ciclo">
+    <li><span class="num">Paso 1</span><strong>Capturar</strong>El taller y la tienda generan datos al trabajar: escaneos, contadores de máquina, pedidos.</li>
+    <li><span class="num">Paso 2</span><strong>Integrar</strong>Todo se guarda en el ERP, unido por el número de pedido.</li>
+    <li><span class="num">Paso 3</span><strong>Analizar</strong>El cuadro de mando convierte los datos en indicadores y avisos.</li>
+    <li><span class="num">Paso 4</span><strong>Decidir y actuar</strong>Se cambia algo: un plazo, una compra, un mantenimiento. El resultado vuelve a medirse.</li>
+  </ol>
+  <p class="fuente">Esquema de elaboración propia. Después del paso 4 el ciclo vuelve al 1: los nuevos datos dicen si la decisión funcionó.</p>
+</section>
+
+<section class="seccion" id="capturar">
+  <h2><span class="de-enunciado">1.</span> Qué datos se capturarían</h2>
+  <p>La regla es que el dato se capture donde nace y sin trabajo extra: como consecuencia de hacer la tarea, no como una tarea más.</p>
+  <div class="tabla">
+    <table>
+      <thead>
+        <tr><th scope="col">Dato</th><th scope="col">Dónde nace</th><th scope="col">Cómo se captura</th><th scope="col">Entorno</th></tr>
+      </thead>
+      <tbody>
+        <tr><td>Prenda, tallas, cantidad, diseño y cliente</td><td>En la tienda online o en comercial</td><td>Al hacer el pedido <span class="cod cod--it">IT2</span> <span class="cod cod--it">IT1</span></td><td><span class="et et--it">IT</span></td></tr>
+        <tr><td>Fecha prometida y fecha real de entrega</td><td>En el sistema de gestión</td><td>Automático <span class="cod cod--it">IT1</span></td><td><span class="et et--it">IT</span></td></tr>
+        <tr><td>Hora de inicio y fin de cada operación</td><td>En el puesto de trabajo</td><td>Escaneo del QR <span class="cod cod--ot">OT1</span></td><td><span class="et et--ot">OT</span></td></tr>
+        <tr><td>Unidades fabricadas y unidades a repetir</td><td>En la máquina y en acabado</td><td>Contador de máquina o tableta <span class="cod cod--ot">OT2</span> <span class="cod cod--ot">OT1</span></td><td><span class="et et--ot">OT</span></td></tr>
+        <tr><td>Paradas de máquina y su motivo</td><td>En la máquina</td><td>Conexión de la máquina y nota del operario <span class="cod cod--ot">OT2</span></td><td><span class="et et--ot">OT</span></td></tr>
+        <tr><td>Entradas y salidas de prendas y materiales</td><td>En el almacén</td><td>Escaneo de etiquetas <span class="cod cod--ot">OT3</span></td><td><span class="et et--ot">OT</span></td></tr>
+      </tbody>
+    </table>
+  </div>
+</section>
+
+<section class="seccion" id="integrar">
+  <h2><span class="de-enunciado">2.</span> Cómo se integrarían</h2>
+  <ol class="flujo">
+    <li><strong>Mismo identificador</strong>Cada dato lleva el número de pedido. Sin él, los tiempos del taller no se podrían cruzar con las ventas.</li>
+    <li><strong>Mismo almacén de datos</strong>Los datos de IT y de OT llegan a la base de datos del ERP por la red del taller.</li>
+    <li><strong>Mismo formato</strong>Las prendas, tallas y técnicas se eligen de una lista cerrada, no se escriben a mano.</li>
+    <li class="final"><strong>Una sola pantalla</strong>El cuadro de mando lee de ahí. Nadie exporta ni combina hojas de cálculo.</li>
+  </ol>
+  <div class="decision">
+    <h4>Por qué insistimos en la lista cerrada</h4>
+    <p>Si un comercial escribe “sudadera”, otro “sudadera capucha” y otro “hoodie”, el sistema ve tres productos distintos y el análisis sale mal. Integrar no es solo juntar los datos: es que signifiquen lo mismo para todos.</p>
+  </div>
+</section>
+
+<section class="seccion" id="analizar">
+  <h2><span class="de-enunciado">3.</span> Qué información se podría analizar</h2>
+  <p>Estos son los indicadores que pondríamos en el cuadro de mando. Cada uno responde a una pregunta que hoy nadie puede contestar con seguridad.</p>
+  <div class="tabla">
+    <table>
+      <thead>
+        <tr><th scope="col">Pregunta</th><th scope="col">Indicador</th><th scope="col">Datos que cruza</th></tr>
+      </thead>
+      <tbody>
+        <tr><td>¿Cumplimos lo que prometemos?</td><th scope="row">Porcentaje de pedidos entregados en fecha</th><td>Fecha prometida y fecha real</td></tr>
+        <tr><td>¿Cuánto tardamos de verdad?</td><th scope="row">Tiempo medio por unidad, según prenda y técnica</th><td>Inicio, fin y unidades de cada operación</td></tr>
+        <tr><td>¿Cabe otro pedido grande?</td><th scope="row">Carga de trabajo por sección</th><td>Órdenes en cola y tiempo medio</td></tr>
+        <tr><td>¿Dónde se nos va el material?</td><th scope="row">Porcentaje de unidades repetidas, por máquina y tipo de diseño</th><td>Unidades a repetir, máquina y diseño</td></tr>
+        <tr><td>¿Cuándo hay que comprar?</td><th scope="row">Semanas de existencias por prenda y talla</th><td>Salidas de almacén y existencias</td></tr>
+        <tr><td>¿Qué nos piden más?</td><th scope="row">Ventas por producto y por cliente</th><td>Pedidos</td></tr>
+      </tbody>
+    </table>
+  </div>
+</section>
+
+<section class="seccion" id="decidir">
+  <h2><span class="de-enunciado">4.</span> Qué decisión o acción podría tomarse</h2>
+  <p>Tres ejemplos del ciclo completo, uno por cada tipo de decisión: de plazos, de compras y de calidad.</p>
+  <div class="tabla tabla--ancha">
+    <table>
+      <thead>
+        <tr><th scope="col">Caso</th><th scope="col">Se captura</th><th scope="col">Se integra</th><th scope="col">Se analiza</th><th scope="col" class="destacada">Se decide y se actúa</th></tr>
+      </thead>
+      <tbody>
+        <tr>
+          <th scope="row">Plazos de entrega</th>
+          <td>Tiempo real de bordado por unidad</td>
+          <td>Con los pedidos en cola y sus fechas prometidas</td>
+          <td>Los pedidos grandes de bordado tardan más de lo que se promete</td>
+          <td class="destacada">La tienda calcula la fecha con el tiempo real y la carga del taller. Se reordena la cola para no incumplir.</td>
+        </tr>
+        <tr>
+          <th scope="row">Compras</th>
+          <td>Salidas de almacén de cada prenda y talla</td>
+          <td>Con las existencias y con los pedidos ya aceptados</td>
+          <td>Una talla se agotará antes de que llegue la reposición habitual</td>
+          <td class="destacada">El sistema avisa a compras al bajar del mínimo. Se adelanta el pedido al proveedor.</td>
+        </tr>
+        <tr>
+          <th scope="row">Calidad</th>
+          <td>Unidades a repetir en cada máquina</td>
+          <td>Con el tipo de diseño y de prenda</td>
+          <td>Una máquina concentra las repeticiones en un tipo de diseño</td>
+          <td class="destacada">Se revisa esa máquina y se cambia su ajuste. Se comprueba en las semanas siguientes si el porcentaje baja.</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+  <p class="fuente">Ejemplos planteados por el equipo para mostrar cómo funcionaría el ciclo. No son resultados medidos.</p>
+
+  <div class="definicion" style="margin-top:1.4rem">
+    <p>Hoy TextiConect decide con lo que cada uno recuerda. Con el ciclo en marcha, cada pedido deja datos que mejoran la respuesta al siguiente.</p>
+  </div>
+</section>

@@ -1,0 +1,135 @@
+<header class="cabecera">
+  <p class="parte">Punto 4</p>
+  <h1>Convergencia IT-OT</h1>
+  <p class="entradilla">Converger es conseguir que la oficina y el taller trabajen sobre los mismos datos. En TextiConect, lo que cose los dos entornos es el pedido.</p>
+  <ul class="indice-pagina">
+    <li><a href="#esquema">Esquema de integración</a></li>
+    <li><a href="#flujos">Qué información viaja</a></li>
+    <li><a href="#piezas">Cómo se conectan</a></li>
+    <li><a href="#beneficios">Dos beneficios</a></li>
+    <li><a href="#riesgo">El riesgo que hay que cubrir</a></li>
+  </ul>
+</header>
+
+<section class="seccion" id="esquema">
+  <h2>Esquema de integración entre IT y OT</h2>
+  <p>Arriba, lo que ocurre en la oficina. Abajo, lo que ocurre en el taller. En medio, la costura: un sistema único por el que bajan las órdenes y suben los datos de producción.</p>
+
+  <figure class="esquema" aria-labelledby="esquema-pie">
+    <div class="esquema__titulo">Integración IT-OT en TextiConect</div>
+
+    <div class="esquema__cliente">
+      <span class="et et--cli">Cliente</span>
+      <span>{{i:pantalla}} Personaliza y pide en la tienda online</span>
+      <span>{{i:correo}} Recibe avisos y consulta el estado en su área de cliente</span>
+    </div>
+
+    <div class="esquema__banda esquema__banda--it">
+      <h4><span class="et et--it">IT</span> Oficina: gestiona la información del pedido</h4>
+      <div class="esquema__cajas">
+        <div class="caja">{{i:pantalla}}<strong>Tienda y área de cliente</strong>Personalizador, pedidos y seguimiento. <span class="cod cod--it">IT2</span></div>
+        <div class="caja">{{i:persona}}<strong>Ventas y atención</strong>Presupuestos, clientes y avisos. <span class="cod cod--it">IT3</span></div>
+        <div class="caja">{{i:caja}}<strong>Inventario y compras</strong>Existencias y pedidos a proveedores. <span class="cod cod--it">IT1</span></div>
+        <div class="caja">{{i:factura}}<strong>Facturación</strong>Se genera al enviar el pedido. <span class="cod cod--it">IT1</span></div>
+        <div class="caja">{{i:grafico}}<strong>Cuadro de mando</strong>Plazos, carga y existencias. <span class="cod cod--it">IT4</span></div>
+      </div>
+    </div>
+
+    <div class="esquema__costura">
+      <div class="viaje viaje--baja">
+        <svg viewBox="0 0 16 42" aria-hidden="true"><path d="M8 1v34" stroke="currentColor" stroke-width="3" fill="none" stroke-linecap="round"/><path d="M2 30l6 9 6-9z" fill="currentColor"/></svg>
+        <div><strong>Baja del IT al OT</strong>Orden de fabricación: qué prenda, cuántas, qué diseño, para cuándo y con qué prioridad.</div>
+      </div>
+      <div class="nucleo">
+        <strong>Sistema de gestión único</strong>
+        <span>Cada pedido tiene un número y un código QR que lo identifican en la oficina y en el taller.</span>
+        <div class="piezas"><span>Base de datos única</span><span>Módulo de fabricación</span><span>Conector de máquinas</span></div>
+      </div>
+      <div class="viaje viaje--sube">
+        <svg viewBox="0 0 16 42" aria-hidden="true"><path d="M8 41V7" stroke="currentColor" stroke-width="3" fill="none" stroke-linecap="round"/><path d="M2 12l6-9 6 9z" fill="currentColor"/></svg>
+        <div><strong>Sube del OT al IT</strong>Inicio y fin de cada operación, unidades correctas y defectuosas, material consumido, paradas de máquina.</div>
+      </div>
+    </div>
+
+    <div class="esquema__banda esquema__banda--ot">
+      <h4><span class="et et--ot">OT</span> Taller: transforma la prenda y genera datos reales</h4>
+      <div class="esquema__cajas">
+        <div class="caja">{{i:tableta}}<strong>Puestos con tableta</strong>Cola de trabajo y escaneo del QR. <span class="cod cod--ot">OT1</span></div>
+        <div class="caja">{{i:impresora}}<strong>Impresión textil</strong>Recibe el diseño y cuenta unidades. <span class="cod cod--ot">OT2</span></div>
+        <div class="caja">{{i:maquina}}<strong>Bordado</strong>Recibe el diseño y cuenta unidades. <span class="cod cod--ot">OT2</span></div>
+        <div class="caja">{{i:camiseta}}<strong>Acabado y calidad</strong>Marca unidades correctas o a repetir. <span class="cod cod--ot">OT1</span></div>
+        <div class="caja">{{i:qr}}<strong>Almacén y envíos</strong>Entradas y salidas escaneadas. <span class="cod cod--ot">OT3</span></div>
+      </div>
+    </div>
+  </figure>
+  <p class="fuente" id="esquema-pie">Esquema de elaboración propia. Los códigos remiten a las tecnologías de la <a href="3-propuesta.html#tecnologias">propuesta</a>. Toda la parte del taller funciona sobre la red separada <span class="cod cod--ot">OT4</span>.</p>
+</section>
+
+<section class="seccion" id="flujos">
+  <h2>Qué información viaja y para qué</h2>
+  <div class="tabla">
+    <table>
+      <thead>
+        <tr><th scope="col">Sentido</th><th scope="col">Dato</th><th scope="col">Quién lo genera</th><th scope="col">Quién lo usa y para qué</th></tr>
+      </thead>
+      <tbody>
+        <tr><td rowspan="3"><span class="et et--it">IT</span> → <span class="et et--ot">OT</span></td><td>Orden de fabricación</td><td>El ERP, al confirmarse el pedido</td><td>El operario sabe qué hacer y en qué orden sin que nadie se lo diga</td></tr>
+        <tr><td>Archivo de diseño aprobado</td><td>Diseño, tras validarlo el cliente</td><td>La máquina carga el diseño correcto</td></tr>
+        <tr><td>Fecha comprometida y prioridad</td><td>Comercial o la tienda online</td><td>El taller ordena su cola de trabajo</td></tr>
+        <tr><td rowspan="4"><span class="et et--ot">OT</span> → <span class="et et--it">IT</span></td><td>Inicio y fin de cada operación</td><td>El operario, al escanear el QR</td><td>Comercial y cliente ven el estado; el sistema calcula plazos reales</td></tr>
+        <tr><td>Unidades fabricadas y defectuosas</td><td>La máquina conectada o la tableta</td><td>Calidad detecta fallos; el cliente ve el avance</td></tr>
+        <tr><td>Material consumido</td><td>El escaneo en almacén</td><td>Inventario se descuenta; compras recibe aviso de reposición</td></tr>
+        <tr><td>Paradas e incidencias</td><td>La máquina o el operario</td><td>Dirección decide sobre mantenimiento y recalcula entregas</td></tr>
+      </tbody>
+    </table>
+  </div>
+</section>
+
+<section class="seccion" id="piezas">
+  <h2>Cómo se podrían integrar ambos entornos</h2>
+  <p>La integración se apoya en tres piezas. Ninguna exige sustituir las máquinas.</p>
+  <ol class="flujo">
+    <li><strong>Un identificador común</strong>El número de pedido, impreso como código QR en la orden y en las cajas. Es lo que permite que oficina y taller hablen de lo mismo.</li>
+    <li><strong>Una base de datos única</strong>El ERP guarda el pedido y su estado. Tienda, comercial y taller leen y escriben ahí, no en copias.</li>
+    <li class="final"><strong>Conectores</strong>Las tabletas y las máquinas envían sus datos al ERP por la red. Donde la máquina no lo permite, el escaneo del operario hace de conector.</li>
+  </ol>
+  <div class="decision">
+    <h4>Decisión del equipo: el módulo de fabricación como puente</h4>
+    <p>En una fábrica grande, entre la gestión y las máquinas hay un sistema intermedio llamado MES. En un taller de dos secciones nos basta con el módulo de fabricación del propio ERP, que convierte cada pedido en una orden y ordena la cola. Así evitamos mantener dos programas que habría que integrar entre sí.</p>
+  </div>
+</section>
+
+<section class="seccion" id="beneficios">
+  <h2>Dos beneficios específicos de la convergencia</h2>
+  <div class="rejilla rejilla--2">
+    <div class="solucion">
+      <p class="n">Beneficio 1, en las operaciones</p>
+      <h3>Plazos fiables y visibles sin llamar a nadie</h3>
+      <ul>
+        <li>Comercial ve en pantalla en qué paso está cada pedido.</li>
+        <li>El cliente lo consulta por su cuenta y recibe avisos.</li>
+        <li>La fecha de entrega se calcula con la carga real del taller, no a ojo.</li>
+      </ul>
+      <p class="responde">Responde a <span class="cod cod--claro">P2</span> <span class="cod cod--claro">P3</span> <span class="cod cod--claro">P5</span></p>
+    </div>
+    <div class="solucion">
+      <p class="n">Beneficio 2, en la toma de decisiones</p>
+      <h3>Comprar y planificar según lo que de verdad se fabrica</h3>
+      <ul>
+        <li>El material se descuenta cuando se usa, no cuando alguien lo apunta.</li>
+        <li>El sistema avisa de comprar antes de que falten prendas.</li>
+        <li>Dirección sabe qué máquina va saturada antes de aceptar un pedido grande.</li>
+      </ul>
+      <p class="responde">Responde a <span class="cod cod--claro">P1</span> <span class="cod cod--claro">P4</span></p>
+    </div>
+  </div>
+</section>
+
+<section class="seccion" id="riesgo">
+  <h2>El riesgo que hay que cubrir</h2>
+  <div class="aviso">
+    <h4>Conectar también expone</h4>
+    <p>Mientras las máquinas estaban aisladas, un virus en la oficina no podía llegar a ellas. Al unirlas a la red, sí. INCIBE señala que la convergencia amplía la superficie de ataque y recomienda separar las redes y vigilar el tráfico entre ellas. Por eso el plan incluye <span class="cod cod--ot">OT4</span> en la misma fase en la que el taller empieza a enviar datos.</p>
+    <p class="fuente">Fuente: <a href="https://www.incibe.es/incibe-cert/blog/convergencia-ti">INCIBE, “Convergencia TI-TO”</a>.</p>
+  </div>
+</section>

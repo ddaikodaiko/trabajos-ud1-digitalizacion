@@ -1,0 +1,116 @@
+<header class="cabecera">
+  <p class="parte">Punto 1</p>
+  <h1>Diagnóstico inicial</h1>
+  <p class="entradilla">Antes de proponer tecnología hay que saber qué falla y por qué. Hemos encontrado seis problemas y los hemos clasificado según les falten datos, conectividad o automatización.</p>
+  <ul class="indice-pagina">
+    <li><a href="#criterio">Las tres causas</a></li>
+    <li><a href="#matriz">Matriz de problemas</a></li>
+    <li><a href="#detalle">Problema a problema</a></li>
+    <li><a href="#conclusion">Conclusión</a></li>
+  </ul>
+</header>
+
+<section class="seccion" id="criterio">
+  <h2>Las tres causas que pide el enunciado</h2>
+  <div class="rejilla rejilla--3">
+    <div class="rasgo"><h4><span class="causa"><b>D</b>Falta de datos</span></h4><p>La información no existe, está incompleta o no es fiable porque depende de que alguien la apunte.</p></div>
+    <div class="rasgo"><h4><span class="causa"><b>C</b>Falta de conectividad</span></h4><p>La información existe, pero no llega: personas, departamentos o máquinas no están enlazados.</p></div>
+    <div class="rasgo"><h4><span class="causa"><b>A</b>Falta de automatización</span></h4><p>La tarea podría hacerse sola, pero la hace una persona repitiendo pasos.</p></div>
+  </div>
+</section>
+
+<section class="seccion" id="matriz">
+  <h2>Matriz de problemas y causas</h2>
+  <p>El enunciado pide al menos cuatro. Cinco salen directamente del texto del caso y el sexto es una deducción nuestra.</p>
+  <div class="tabla matriz">
+    <table>
+      <thead>
+        <tr><th scope="col">Problema</th><th scope="col" class="celda">Datos</th><th scope="col" class="celda">Conectividad</th><th scope="col" class="celda">Automatización</th></tr>
+      </thead>
+      <tbody>
+        <tr><td><span class="cod">P1</span> Los pedidos se copian a mano en una hoja de cálculo</td><td class="celda"><span class="punto"></span><span class="vh">Sí</span></td><td class="celda"><span class="punto punto--no"></span><span class="vh">No</span></td><td class="celda"><span class="punto"></span><span class="vh">Sí</span></td></tr>
+        <tr><td><span class="cod">P2</span> Comercial tiene que llamar a producción para saber un plazo</td><td class="celda"><span class="punto"></span><span class="vh">Sí</span></td><td class="celda"><span class="punto"></span><span class="vh">Sí</span></td><td class="celda"><span class="punto punto--no"></span><span class="vh">No</span></td></tr>
+        <tr><td><span class="cod">P3</span> Las máquinas no están conectadas con la gestión</td><td class="celda"><span class="punto punto--no"></span><span class="vh">No</span></td><td class="celda"><span class="punto"></span><span class="vh">Sí</span></td><td class="celda"><span class="punto punto--no"></span><span class="vh">No</span></td></tr>
+        <tr><td><span class="cod">P4</span> El inventario se actualiza a mano</td><td class="celda"><span class="punto"></span><span class="vh">Sí</span></td><td class="celda"><span class="punto punto--no"></span><span class="vh">No</span></td><td class="celda"><span class="punto"></span><span class="vh">Sí</span></td></tr>
+        <tr><td><span class="cod">P5</span> El aviso de pedido terminado pasa por dos personas antes de llegar al cliente</td><td class="celda"><span class="punto punto--no"></span><span class="vh">No</span></td><td class="celda"><span class="punto"></span><span class="vh">Sí</span></td><td class="celda"><span class="punto"></span><span class="vh">Sí</span></td></tr>
+        <tr><td><span class="cod">P6</span> La web solo recoge pedidos: no permite personalizar ni consultar el estado</td><td class="celda"><span class="punto punto--no"></span><span class="vh">No</span></td><td class="celda"><span class="punto"></span><span class="vh">Sí</span></td><td class="celda"><span class="punto"></span><span class="vh">Sí</span></td></tr>
+      </tbody>
+    </table>
+  </div>
+  <p class="fuente">Elaboración propia. El punto relleno indica que esa causa interviene. P1, P2, P4, P5 y P6 son una combinación de dos causas; P3 es sobre todo de conectividad.</p>
+
+  <div class="grafico" style="margin-top:1.2rem">
+    <h4>Cuántos problemas toca cada causa</h4>
+    <p class="nota">Número de problemas, de un total de seis</p>
+    <div class="barras" style="--col-nombre: 8.5rem">
+      <div class="barras__fila"><span class="barras__nombre">Conectividad</span><span class="barras__pista"><span class="barras__barra" style="--v:56"></span><span class="barras__valor">4</span></span></div>
+      <div class="barras__fila"><span class="barras__nombre">Automatización</span><span class="barras__pista"><span class="barras__barra" style="--v:56"></span><span class="barras__valor">4</span></span></div>
+      <div class="barras__fila"><span class="barras__nombre">Datos</span><span class="barras__pista"><span class="barras__barra" style="--v:42"></span><span class="barras__valor">3</span></span></div>
+    </div>
+  </div>
+</section>
+
+<section class="seccion" id="detalle">
+  <h2>Problema a problema</h2>
+  <div class="rejilla rejilla--2">
+    <article class="problema">
+      <h3><span class="cod">P1</span>Pedidos copiados a mano</h3>
+      <div class="causas"><span class="causa"><b>D</b>Datos</span><span class="causa"><b>A</b>Automatización</span></div>
+      <dl>
+        <div><dt>Qué dice el caso</dt><dd>Los pedidos llegan por teléfono, correo y web, y se registran manualmente en una hoja de cálculo.</dd></div>
+        <div><dt>Qué provoca</dt><dd>Errores al teclear, pedidos duplicados u olvidados y varias versiones de la misma hoja.</dd></div>
+      </dl>
+    </article>
+    <article class="problema">
+      <h3><span class="cod">P2</span>Plazos que solo se saben llamando</h3>
+      <div class="causas"><span class="causa"><b>D</b>Datos</span><span class="causa"><b>C</b>Conectividad</span></div>
+      <dl>
+        <div><dt>Qué dice el caso</dt><dd>Comercial consulta por teléfono a producción para saber cuándo estará terminado un pedido.</dd></div>
+        <div><dt>Qué provoca</dt><dd>Interrupciones en el taller, respuestas lentas al cliente y plazos calculados a ojo.</dd></div>
+      </dl>
+    </article>
+    <article class="problema">
+      <h3><span class="cod">P3</span>Máquinas aisladas</h3>
+      <div class="causas"><span class="causa"><b>C</b>Conectividad</span></div>
+      <dl>
+        <div><dt>Qué dice el caso</dt><dd>Las máquinas de impresión y bordado no están conectadas con los sistemas de gestión.</dd></div>
+        <div><dt>Qué provoca</dt><dd>Nadie fuera del taller sabe qué se está fabricando, cuánto falta ni si una máquina está parada.</dd></div>
+      </dl>
+    </article>
+    <article class="problema">
+      <h3><span class="cod">P4</span>Inventario manual</h3>
+      <div class="causas"><span class="causa"><b>D</b>Datos</span><span class="causa"><b>A</b>Automatización</span></div>
+      <dl>
+        <div><dt>Qué dice el caso</dt><dd>El inventario de prendas y materiales se actualiza manualmente.</dd></div>
+        <div><dt>Qué provoca</dt><dd>Se aceptan pedidos sin saber si hay prendas, se compra tarde o de más y el recuento nunca coincide.</dd></div>
+      </dl>
+    </article>
+    <article class="problema">
+      <h3><span class="cod">P5</span>Avisos en cadena</h3>
+      <div class="causas"><span class="causa"><b>C</b>Conectividad</span><span class="causa"><b>A</b>Automatización</span></div>
+      <dl>
+        <div><dt>Qué dice el caso</dt><dd>Al finalizar un pedido, un empleado lo comunica a comercial, que después informa al cliente por correo.</dd></div>
+        <div><dt>Qué provoca</dt><dd>El cliente se entera tarde y solo al final. Si alguien se olvida, el pedido terminado se queda esperando.</dd></div>
+      </dl>
+    </article>
+    <article class="problema">
+      <h3><span class="cod">P6</span>Web que no hace nada más</h3>
+      <div class="causas"><span class="causa"><b>C</b>Conectividad</span><span class="causa"><b>A</b>Automatización</span></div>
+      <dl>
+        <div><dt>Qué dice el caso</dt><dd>Hay una “página web básica” como tercer canal de entrada de pedidos.</dd></div>
+        <div><dt>Qué deducimos</dt><dd>No está enlazada con pedidos ni con producción: no permite personalizar la prenda ni ver cómo va el encargo.</dd></div>
+      </dl>
+    </article>
+  </div>
+</section>
+
+<section class="seccion" id="conclusion">
+  <h2>Conclusión del diagnóstico</h2>
+  <div class="definicion">
+    <p>El pedido no tiene un sitio único. Vive a la vez en el teléfono, en la hoja de cálculo, en la cabeza del operario y en el correo, y cada salto entre ellos lo hace una persona.</p>
+  </div>
+  <div class="decision">
+    <h4>Decisión del equipo: por dónde empezar</h4>
+    <p>Como conectividad y automatización aparecen en cuatro problemas cada una, el plan no empieza comprando máquinas nuevas. Empieza por dar al pedido un registro único y por conectar con él lo que ya existe. Lo desarrollamos en la <a href="3-propuesta.html">propuesta tecnológica</a>.</p>
+  </div>
+</section>

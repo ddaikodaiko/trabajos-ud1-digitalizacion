@@ -1,0 +1,109 @@
+<header class="cabecera">
+  <p class="parte">Punto 2</p>
+  <h1>Identificación IT/OT</h1>
+  <p class="entradilla">En TextiConect conviven dos mundos: el de la oficina, que trabaja con información, y el del taller, que trabaja con máquinas y prendas. Hoy no se hablan.</p>
+  <ul class="indice-pagina">
+    <li><a href="#que-son">Qué caracteriza a cada entorno</a></li>
+    <li><a href="#comparacion">Comparación</a></li>
+    <li><a href="#donde">Dónde está cada uno en TextiConect</a></li>
+    <li><a href="#plano">Plano de la empresa</a></li>
+  </ul>
+</header>
+
+<section class="seccion" id="que-son">
+  <h2>Qué procesos y tecnologías caracterizan a cada entorno</h2>
+  <div class="rejilla rejilla--2">
+    <article class="entorno entorno--it">
+      <div class="entorno__cab"><span class="sigla">IT</span><h3>Tecnologías de la información</h3></div>
+      <p>Sirven para <strong>gestionar datos del negocio</strong>: quién pide, qué pide, cuánto cuesta y cuándo se entrega.</p>
+      <ul style="margin-top:0.7rem">
+        <li><strong>Procesos:</strong> ventas, atención al cliente, compras, facturación, contabilidad.</li>
+        <li><strong>Tecnologías hoy:</strong> ordenadores de oficina, correo electrónico, teléfono, hoja de cálculo y la página web.</li>
+        <li><strong>Lo que maneja:</strong> pedidos, clientes, precios, facturas.</li>
+      </ul>
+    </article>
+    <article class="entorno entorno--ot">
+      <div class="entorno__cab"><span class="sigla">OT</span><h3>Tecnologías de la operación</h3></div>
+      <p>Sirven para <strong>controlar procesos físicos</strong>: las máquinas y equipos que transforman una prenda lisa en una personalizada.</p>
+      <ul style="margin-top:0.7rem">
+        <li><strong>Procesos:</strong> impresión, bordado, acabado, control de calidad, movimiento de material.</li>
+        <li><strong>Tecnologías hoy:</strong> máquinas de impresión textil y de bordado, cada una con su propio control.</li>
+        <li><strong>Lo que maneja:</strong> prendas, hilos, tintas, tiempos de máquina.</li>
+      </ul>
+    </article>
+  </div>
+  <p class="fuente">Definiciones adaptadas del <a href="https://www.incibe.es/incibe-cert/blog/convergencia-ti">Instituto Nacional de Ciberseguridad (INCIBE)</a> y del <a href="https://csrc.nist.gov/glossary/term/operational_technology">glosario del NIST</a>. INCIBE usa las siglas en español, TI y TO; aquí usamos IT y OT, como el enunciado.</p>
+</section>
+
+<section class="seccion" id="comparacion">
+  <h2>En qué se diferencian</h2>
+  <div class="tabla">
+    <table>
+      <thead>
+        <tr><th scope="col">Aspecto</th><th scope="col"><span class="et et--it">IT</span> Oficina</th><th scope="col"><span class="et et--ot">OT</span> Taller</th></tr>
+      </thead>
+      <tbody>
+        <tr><th scope="row">Con qué trabaja</th><td>Información</td><td>Objetos físicos y máquinas</td></tr>
+        <tr><th scope="row">Lo más importante</th><td>Que los datos sean correctos y estén protegidos</td><td>Que la producción no se pare y sea segura para las personas</td></tr>
+        <tr><th scope="row">Ritmo</th><td>Horas o días: un presupuesto, una factura</td><td>Segundos o minutos: cada puntada, cada pasada de impresión</td></tr>
+        <tr><th scope="row">Si falla</th><td>Se retrasa un trámite</td><td>Se para la máquina y se pierde producción o material</td></tr>
+        <tr><th scope="row">Vida de los equipos</th><td>Corta: se renuevan y actualizan a menudo</td><td>Larga: una máquina dura muchos años y se toca poco</td></tr>
+        <tr><th scope="row">Quién lo usa</th><td>Comercial, administración, dirección</td><td>Operarios de impresión, bordado y almacén</td></tr>
+      </tbody>
+    </table>
+  </div>
+  <p class="fuente">Elaboración propia a partir de <a href="https://www.incibe.es/incibe-cert/blog/convergencia-ti">INCIBE, “Convergencia TI-TO”</a> e <a href="https://www.incibe.es/incibe-cert/blog/ti-y-somos-amigos">“TI y TO, ¿ya somos amigos?”</a>.</p>
+</section>
+
+<section class="seccion" id="donde">
+  <h2>Departamentos y procesos de cada entorno en TextiConect</h2>
+  <p>El enunciado pide al menos dos de cada entorno. Localizamos tres en cada uno.</p>
+  <div class="rejilla rejilla--2">
+    <article class="entorno entorno--it">
+      <div class="entorno__cab"><span class="sigla">IT</span><h3>Entorno de gestión</h3></div>
+      <ul class="lugares">
+        <li><strong>{{i:telefono}} Comercial y atención al cliente</strong>Recibe los pedidos por teléfono, correo y web, y comunica plazos y estados.</li>
+        <li><strong>{{i:hoja}} Registro de pedidos e inventario</strong>La hoja de cálculo donde se apuntan pedidos y existencias.</li>
+        <li><strong>{{i:factura}} Administración y compras</strong>Facturación, cobros y pedidos a proveedores de prendas y materiales.</li>
+      </ul>
+    </article>
+    <article class="entorno entorno--ot">
+      <div class="entorno__cab"><span class="sigla">OT</span><h3>Entorno de producción</h3></div>
+      <ul class="lugares">
+        <li><strong>{{i:impresora}} Impresión textil</strong>Las máquinas que estampan el diseño sobre la prenda.</li>
+        <li><strong>{{i:maquina}} Bordado</strong>Las máquinas que bordan logotipos y textos.</li>
+        <li><strong>{{i:caja}} Almacén, acabado y expedición</strong>Movimiento físico de prendas, revisión, empaquetado y envío.</li>
+      </ul>
+    </article>
+  </div>
+  <div class="decision">
+    <h4>Lo que nos hizo dudar: ¿el inventario es IT u OT?</h4>
+    <p>Las dos cosas. El <strong>registro</strong> de existencias es información y pertenece a IT. El <strong>movimiento</strong> de cajas y prendas es físico y pertenece a OT. Hoy la unión entre ambos es una persona que cuenta y apunta, y por eso el inventario es uno de los primeros puntos donde conviene unir los dos entornos.</p>
+  </div>
+</section>
+
+<section class="seccion" id="plano">
+  <h2>Plano de la empresa</h2>
+  <p>Así repartimos las 12 personas entre los dos entornos. La línea de pespunte es la frontera que hoy solo se cruza de palabra.</p>
+  <div class="plano" role="img" aria-label="Plano esquemático de TextiConect: a la izquierda la oficina, entorno IT, con dirección, comercial, administración y diseño; a la derecha el taller, entorno OT, con impresión, bordado y almacén.">
+    <div class="plano__zona plano__zona--it">
+      <h4><span class="et et--it">IT</span> Oficina, 5 personas</h4>
+      <div class="plano__salas">
+        <div class="sala"><strong>Dirección</strong><span>1 persona</span></div>
+        <div class="sala"><strong>Comercial y atención al cliente</strong><span>2 personas</span></div>
+        <div class="sala"><strong>Administración y compras</strong><span>1 persona</span></div>
+        <div class="sala"><strong>Diseño y preparación de archivos</strong><span>1 persona</span></div>
+      </div>
+    </div>
+    <div class="plano__zona plano__zona--ot">
+      <h4><span class="et et--ot">OT</span> Taller, 7 personas</h4>
+      <div class="plano__salas">
+        <div class="sala"><strong>Impresión textil</strong><span>3 personas</span></div>
+        <div class="sala"><strong>Bordado</strong><span>2 personas</span></div>
+        <div class="sala"><strong>Almacén, acabado y envíos</strong><span>2 personas</span></div>
+        <div class="sala sala--puente"><strong>Inventario</strong><span>Registro en IT, movimiento en OT</span></div>
+      </div>
+    </div>
+  </div>
+  <p class="fuente">Elaboración propia. El caso solo dice que hay 12 empleados: el reparto por áreas es un supuesto del equipo para poder concretar el plan.</p>
+</section>
