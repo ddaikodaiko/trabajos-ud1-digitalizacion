@@ -94,3 +94,20 @@
   reiniciar.addEventListener("click", function () { actual = 0; pintar(); });
   pintar();
 })();
+
+// Fotos: si alguna no llega a cargar, se retira sin descolocar la página
+(function () {
+  var fotos = document.querySelectorAll("img[data-foto]");
+  function retirar(img) {
+    var banda = img.closest(".foto-banda");
+    if (banda) { banda.hidden = true; return; }
+    var tarjeta = img.closest(".entorno");
+    if (tarjeta) tarjeta.classList.add("tarjeta--sin-foto");
+  }
+  for (var i = 0; i < fotos.length; i++) {
+    (function (img) {
+      img.addEventListener("error", function () { retirar(img); });
+      if (img.complete && img.currentSrc && img.naturalWidth === 0) retirar(img);
+    })(fotos[i]);
+  }
+})();

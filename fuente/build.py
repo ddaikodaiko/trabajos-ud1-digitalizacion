@@ -1,5 +1,6 @@
 #!/usr/bin/env python3
 """Monta el sitio estático de TextiConect: une cada fragmento de src/ con la plantilla común."""
+import hashlib
 import re
 from pathlib import Path
 
@@ -67,8 +68,9 @@ PLANTILLA = """<!doctype html>
 <meta name="description" content="{descripcion}">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Barlow:ital,wght@0,400;0,500;0,700;1,400&family=Barlow+Semi+Condensed:wght@600;700&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="assets/estilos.css">
+<link rel="preload" as="style" href="https://fonts.googleapis.com/css2?family=Caveat:wght@500..700&family=Open+Sans:ital,wght@0,400..800;1,400&family=Playfair+Display:ital,wght@0,500..800;1,600&display=swap" onload="this.onload=null;this.rel='stylesheet'">
+<noscript><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Caveat:wght@500..700&family=Open+Sans:ital,wght@0,400..800;1,400&family=Playfair+Display:ital,wght@0,500..800;1,600&display=swap"></noscript>
+<link rel="stylesheet" href="assets/estilos.css?v={v}">
 </head>
 <body>
 <a class="saltar" href="#contenido">Saltar al contenido</a>
@@ -86,21 +88,111 @@ PLANTILLA = """<!doctype html>
 <main class="contenido" id="contenido">
 {cuerpo}
 {siguiente}
-<p class="pie">Trabajo de clase elaborado por {equipo}. TextiConect S.L. es una empresa ficticia; los esquemas e iconos son de elaboración propia.</p>
+<p class="pie">Trabajo de clase elaborado por {equipo}. TextiConect S.L. es una empresa ficticia; los esquemas e iconos son de elaboración propia y las fotos, de Unsplash (créditos en <a href="glosario.html#fotos">Glosario y fuentes</a>).</p>
 </main>
 </div>
-<script src="assets/sitio.js"></script>
+<script src="assets/sitio.js?v={v}" defer></script>
 </body>
 </html>
 """
+
+
+# Nombres breves para el menú horizontal de escritorio
+BREVES = {
+    "index.html": "El caso",
+    "1-diagnostico.html": "Diagnóstico",
+    "2-it-ot.html": "IT y OT",
+    "3-propuesta.html": "Propuesta",
+    "4-convergencia.html": "Convergencia",
+    "5-impacto.html": "Impacto",
+    "6-situacion.html": "Situación",
+    "7-data-driven.html": "Data-Driven",
+    "glosario.html": "Glosario",
+}
 
 
 def menu(actual: str) -> str:
     filas = []
     for archivo, corta, larga, _, _ in PAGINAS:
         marca = ' aria-current="page"' if archivo == actual else ""
-        filas.append(f'      <li><a href="{archivo}"{marca}><small>{corta}</small>{larga}</a></li>')
+        filas.append(f'      <li><a href="{archivo}"{marca}><small>{corta}</small><span class="largo">{larga}</span><span class="breve" aria-hidden="true">{BREVES[archivo]}</span></a></li>')
     return "\n".join(filas)
+
+
+# Fotografías de Unsplash (licencia libre). Se sirven desde su servidor.
+# clave: (identificador, autor, página de la foto, texto alternativo, dónde se usa)
+UNSPLASH = "https://images.unsplash.com/"
+FOTOS = {
+    "bordado": ("photo-1772351720165-d9218e428cf0", "Rendy Novantino",
+                "https://unsplash.com/photos/embroidery-machine-stitching-design-onto-fabric-MugXVZFpb0A",
+                "Una máquina de bordar cosiendo un diseño sobre una tela.", "Inicio, cabecera"),
+    "notas": ("photo-1527219525722-f9767a7f2884", "Felipe Furtado",
+              "https://unsplash.com/photos/sticky-notes-on-paper-document-beside-pens-and-box-2zDXqgTzEFE",
+              "Notas adhesivas sobre papeles impresos, junto a unos bolígrafos.", "Punto 1, cabecera"),
+    "serigrafia": ("photo-1773525911808-8a2cfd11cbc4", "Anthony Roberts",
+                   "https://unsplash.com/photos/close-up-of-a-screen-printing-machine-in-a-workshop-jLeyoMEVKG4",
+                   "Detalle de una máquina de serigrafía en un taller.", "Punto 2, cabecera"),
+    "portatil": ("photo-1504868584819-f8e8b4b6d7e3", "Lukas Blazek",
+                 "https://unsplash.com/photos/turned-on-black-and-grey-laptop-computer-mcSDtbWXUZU",
+                 "Un portátil con gráficos y hojas de datos en pantalla.", "Punto 2, entorno IT"),
+    "hilos": ("photo-1773166030553-0e81e2fd7226", "Ray T",
+              "https://unsplash.com/photos/close-up-of-an-embroidery-machines-thread-guides-99dCyYiUyz8",
+              "Guías de hilo de una máquina de bordar en primer plano.", "Punto 2, entorno OT"),
+    "qr": ("photo-1595079835357-a94a13cab10c", "Markus Winkler",
+           "https://unsplash.com/photos/black-android-smartphone-displaying-qr-code-kHMiTbqI5QU",
+           "Un teléfono móvil con un código QR en la pantalla.", "Punto 3, cabecera"),
+    "operario": ("photo-1770453676391-90fb980543e5", "Levi Gatimu",
+                 "https://unsplash.com/photos/close-up-of-a-person-operating-an-embroidery-machine-GGeg6Bn2ILE",
+                 "Manos de una persona manejando una máquina de bordar.", "Punto 4, cabecera"),
+    "equipo": ("photo-1517048676732-d65bc937f952", "Dylan Gillis",
+               "https://unsplash.com/photos/people-sitting-on-chair-in-front-of-table-while-holding-pens-during-daytime-KdeqA3aTnBY",
+               "Varias personas reunidas alrededor de una mesa, con papeles y bolígrafos.", "Punto 5, cabecera"),
+    "caja": ("photo-1618381297523-e6c0ab13a5b2", "Mediamodifier",
+             "https://unsplash.com/photos/brown-cardboard-box-on-white-table-5u5IQyQdfkM",
+             "Una caja de cartón de envío con una etiqueta en blanco.", "Punto 6, cabecera"),
+    "analitica": ("photo-1551288049-bebda4e38f71", "Luke Chesser",
+                  "https://unsplash.com/photos/graphs-of-performance-analytics-on-a-laptop-screen-JKUTrJ4vK00",
+                  "Gráficos de indicadores en la pantalla de un portátil.", "Punto 7, cabecera"),
+}
+
+
+def _fuentes(clave: str, anchos: tuple) -> tuple:
+    """Devuelve (src, srcset) de una foto en formato 2:1 a varios anchos."""
+    ident = FOTOS[clave][0]
+    urls = [(f"{UNSPLASH}{ident}?auto=format&amp;fit=crop&amp;w={a}&amp;h={a // 2}&amp;q=70", a) for a in anchos]
+    return urls[-1][0], ", ".join(f"{u} {a}w" for u, a in urls)
+
+
+def foto_tarjeta(clave: str) -> str:
+    """Foto de la parte alta de una tarjeta (formato 2:1)."""
+    src, srcset = _fuentes(clave, (480, 960))
+    return (f'<div class="tarjeta__marco"><img class="tarjeta__foto" data-foto src="{src}" srcset="{srcset}" '
+            f'sizes="(max-width: 56rem) 92vw, 30rem" width="960" height="480" alt="{FOTOS[clave][3]}" loading="lazy" decoding="async"></div>')
+
+
+def foto_banda(clave: str, pie: str) -> str:
+    """Foto ancha con pie a mano y crédito (formato 2:1)."""
+    src, srcset = _fuentes(clave, (800, 1600))
+    _, autor, pagina, alt, _ = FOTOS[clave]
+    return (f'<figure class="foto-banda"><img data-foto src="{src}" srcset="{srcset}" '
+            f'sizes="(max-width: 50rem) 92vw, 46rem" width="1600" height="800" alt="{alt}" decoding="async">'
+            f'<figcaption><span class="foto-banda__pie">{pie}</span>'
+            f'<span class="foto-banda__credito">Foto: <a href="{pagina}">{autor}</a>, Unsplash</span></figcaption></figure>')
+
+
+def creditos() -> str:
+    """Lista de créditos de las fotos para el glosario."""
+    filas = [f'    <li>{autor}. <a href="{pagina}">{alt.rstrip(".")}</a>. Unsplash.<em>{donde}.</em></li>'
+             for _, autor, pagina, alt, donde in FOTOS.values()]
+    return '<ul class="refs">\n' + "\n".join(filas) + "\n  </ul>"
+
+
+def version() -> str:
+    """Huella corta del contenido de estilos y guion."""
+    h = hashlib.sha1()
+    for nombre in ("estilos.css", "sitio.js"):
+        h.update((SITIO / "assets" / nombre).read_bytes())
+    return h.hexdigest()[:8]
 
 
 def siguiente(i: int) -> str:
@@ -115,10 +207,15 @@ def siguiente(i: int) -> str:
 
 
 def main() -> None:
+    v = version()
     for i, (archivo, _, _, titulo, descripcion) in enumerate(PAGINAS):
         cuerpo = (SRC / archivo).read_text(encoding="utf-8")
         # iconos: {{i:nombre}} o {{i:nombre:clase}}
         cuerpo = re.sub(r"\{\{i:([a-z]+)(?::([a-z\- ]+))?\}\}", lambda m: icono(m.group(1), m.group(2) or ""), cuerpo)
+        # fotos: {{foto:clave}} en tarjetas, {{banda:clave|pie}} a lo ancho y {{creditos}}
+        cuerpo = re.sub(r"\{\{foto:([a-z]+)\}\}", lambda m: foto_tarjeta(m.group(1)), cuerpo)
+        cuerpo = re.sub(r"\{\{banda:([a-z]+)\|([^}]+)\}\}", lambda m: foto_banda(m.group(1), m.group(2)), cuerpo)
+        cuerpo = cuerpo.replace("{{creditos}}", creditos())
         # espacio de no separación entre la cifra y el signo de porcentaje
         cuerpo = re.sub(r"(\d) %", r"\1&nbsp;%", cuerpo)
         titulo_completo = titulo if archivo == "index.html" else f"{titulo} | TextiConect"
@@ -129,6 +226,7 @@ def main() -> None:
             equipo=EQUIPO,
             cuerpo=cuerpo,
             siguiente=siguiente(i),
+            v=v,
         )
         (SITIO / archivo).write_text(html, encoding="utf-8")
         print("ok", archivo, len(html))

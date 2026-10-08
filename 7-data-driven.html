@@ -7,8 +7,9 @@
 <meta name="description" content="Qué datos se capturan, cómo se integran, qué se analiza y qué se decide.">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Barlow:ital,wght@0,400;0,500;0,700;1,400&family=Barlow+Semi+Condensed:wght@600;700&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="assets/estilos.css">
+<link rel="preload" as="style" href="https://fonts.googleapis.com/css2?family=Caveat:wght@500..700&family=Open+Sans:ital,wght@0,400..800;1,400&family=Playfair+Display:ital,wght@0,500..800;1,600&display=swap" onload="this.onload=null;this.rel='stylesheet'">
+<noscript><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Caveat:wght@500..700&family=Open+Sans:ital,wght@0,400..800;1,400&family=Playfair+Display:ital,wght@0,500..800;1,600&display=swap"></noscript>
+<link rel="stylesheet" href="assets/estilos.css?v=3042eb7b">
 </head>
 <body>
 <a class="saltar" href="#contenido">Saltar al contenido</a>
@@ -17,15 +18,15 @@
   <button class="menu-boton" type="button" aria-expanded="false" aria-controls="menu">Menú</button>
   <nav id="menu" aria-label="Puntos del trabajo">
     <ul>
-      <li><a href="index.html"><small>Inicio</small>El caso TextiConect</a></li>
-      <li><a href="1-diagnostico.html"><small>Punto 1</small>Diagnóstico inicial</a></li>
-      <li><a href="2-it-ot.html"><small>Punto 2</small>Identificación IT/OT</a></li>
-      <li><a href="3-propuesta.html"><small>Punto 3</small>Propuesta tecnológica</a></li>
-      <li><a href="4-convergencia.html"><small>Punto 4</small>Convergencia IT-OT</a></li>
-      <li><a href="5-impacto.html"><small>Punto 5</small>Impacto organizativo y cultural</a></li>
-      <li><a href="6-situacion.html"><small>Punto 6</small>Situación práctica</a></li>
-      <li><a href="7-data-driven.html" aria-current="page"><small>Punto 7</small>Ciclo Data-Driven</a></li>
-      <li><a href="glosario.html"><small>Anexo</small>Glosario y fuentes</a></li>
+      <li><a href="index.html"><small>Inicio</small><span class="largo">El caso TextiConect</span><span class="breve" aria-hidden="true">El caso</span></a></li>
+      <li><a href="1-diagnostico.html"><small>Punto 1</small><span class="largo">Diagnóstico inicial</span><span class="breve" aria-hidden="true">Diagnóstico</span></a></li>
+      <li><a href="2-it-ot.html"><small>Punto 2</small><span class="largo">Identificación IT/OT</span><span class="breve" aria-hidden="true">IT y OT</span></a></li>
+      <li><a href="3-propuesta.html"><small>Punto 3</small><span class="largo">Propuesta tecnológica</span><span class="breve" aria-hidden="true">Propuesta</span></a></li>
+      <li><a href="4-convergencia.html"><small>Punto 4</small><span class="largo">Convergencia IT-OT</span><span class="breve" aria-hidden="true">Convergencia</span></a></li>
+      <li><a href="5-impacto.html"><small>Punto 5</small><span class="largo">Impacto organizativo y cultural</span><span class="breve" aria-hidden="true">Impacto</span></a></li>
+      <li><a href="6-situacion.html"><small>Punto 6</small><span class="largo">Situación práctica</span><span class="breve" aria-hidden="true">Situación</span></a></li>
+      <li><a href="7-data-driven.html" aria-current="page"><small>Punto 7</small><span class="largo">Ciclo Data-Driven</span><span class="breve" aria-hidden="true">Data-Driven</span></a></li>
+      <li><a href="glosario.html"><small>Anexo</small><span class="largo">Glosario y fuentes</span><span class="breve" aria-hidden="true">Glosario</span></a></li>
     </ul>
   </nav>
   <p class="rail__pie"><strong>Equipo</strong><br>Marcos Ramos, Gonzalo Redondo, Jaime Ramos y Victor Cerveros<br><br>UD1, Digitalización en los sistemas productivos<br>Curso 2026-2027</p>
@@ -36,6 +37,7 @@
   <p class="parte">Punto 7</p>
   <h1>Ciclo Data-Driven</h1>
   <p class="entradilla">Una empresa guiada por datos decide con lo que mide, no con lo que recuerda. En TextiConect el ciclo tiene cuatro pasos y se repite con cada pedido.</p>
+  <figure class="foto-banda"><img data-foto src="https://images.unsplash.com/photo-1551288049-bebda4e38f71?auto=format&amp;fit=crop&amp;w=1600&amp;h=800&amp;q=70" srcset="https://images.unsplash.com/photo-1551288049-bebda4e38f71?auto=format&amp;fit=crop&amp;w=800&amp;h=400&amp;q=70 800w, https://images.unsplash.com/photo-1551288049-bebda4e38f71?auto=format&amp;fit=crop&amp;w=1600&amp;h=800&amp;q=70 1600w" sizes="(max-width: 50rem) 92vw, 46rem" width="1600" height="800" alt="Gráficos de indicadores en la pantalla de un portátil." decoding="async"><figcaption><span class="foto-banda__pie">decidir con lo que se mide, no con lo que se recuerda</span><span class="foto-banda__credito">Foto: <a href="https://unsplash.com/photos/graphs-of-performance-analytics-on-a-laptop-screen-JKUTrJ4vK00">Luke Chesser</a>, Unsplash</span></figcaption></figure>
   <ul class="indice-pagina">
     <li><a href="#ciclo">El ciclo</a></li>
     <li><a href="#capturar">1. Capturar</a></li>
@@ -151,9 +153,9 @@
 </section>
 
 <nav class="siguiente" aria-label="Página anterior y siguiente"><a href="6-situacion.html"><small>Anterior</small>Punto 6: Situación práctica</a><a class="der" href="glosario.html"><small>Siguiente</small>Anexo: Glosario y fuentes</a></nav>
-<p class="pie">Trabajo de clase elaborado por Marcos Ramos, Gonzalo Redondo, Jaime Ramos y Victor Cerveros. TextiConect S.L. es una empresa ficticia; los esquemas e iconos son de elaboración propia.</p>
+<p class="pie">Trabajo de clase elaborado por Marcos Ramos, Gonzalo Redondo, Jaime Ramos y Victor Cerveros. TextiConect S.L. es una empresa ficticia; los esquemas e iconos son de elaboración propia y las fotos, de Unsplash (créditos en <a href="glosario.html#fotos">Glosario y fuentes</a>).</p>
 </main>
 </div>
-<script src="assets/sitio.js"></script>
+<script src="assets/sitio.js?v=3042eb7b" defer></script>
 </body>
 </html>

@@ -542,3 +542,284 @@ figure { margin-inline: 0; }
 
 .tabla td:has(> .et:first-child):not(:has(strong)) { white-space: nowrap; }
 .matriz th.celda { white-space: nowrap; }
+
+/* =====================================================================
+   Mismo esquema estético que el trabajo de Sostenibilidad:
+   índigo, naranja y lavanda; Playfair Display en títulos, Open Sans
+   en el texto y Caveat para lo escrito a mano. Azul (IT) y magenta
+   (OT) se mantienen porque identifican cada entorno.
+   ===================================================================== */
+
+:root {
+  --papel: #f7f7fc;
+  --tinta: #1b2045;
+  --tinta-2: #474c6e;
+  --tinta-3: #6c7193;
+  --pino: #2f3c8f;
+  --pino-2: #3f4eb0;
+  --azul-titulo: #1f3d7a;
+  --lavanda: #b9bde8;
+  --lavanda-suave: #eceefb;
+  --linea: #d9dbec;
+  --linea-2: #e9eaf5;
+  --marca: #f08c3a;
+  --marca-suave: #fdebdc;
+  --display: "Playfair Display", Georgia, "Times New Roman", serif;
+  --texto: "Open Sans", "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+}
+
+h1 { font-weight: 700; letter-spacing: 0; }
+h2 { font-weight: 500; text-transform: uppercase; letter-spacing: 0.01em; font-size: clamp(1.35rem, 2.3vw, 1.8rem); line-height: 1.2; }
+h3 { font-weight: 600; color: var(--azul-titulo); }
+.solucion h3, .balanza h3 { color: var(--tinta); }
+.rail { color: #eef0fb; }
+.rail__titulo span, .rail__pie { color: #c3c8ee; }
+.rail nav a { color: #eef0fb; }
+.rail nav a small { color: #b3b9e6; }
+.rail nav a[aria-current="page"] small { color: #3a2a14; }
+.seccion > h2 .de-enunciado, .apartado > h3 .de-enunciado { color: var(--marca); }
+.cabecera .parte { font-style: italic; }
+.definicion .fuente { color: #c3c8ee; }
+
+/* Las piezas pequeñas (siglas, códigos, números) van en la letra del texto */
+.et, .cod, .entorno__cab .sigla, .causa b, .pasos li::before, .pasos .sello, .fases li::before,
+.esquema__titulo, .tabla thead th, .seguimiento__barra strong, .ciclo li .num, .solucion .n,
+.equipo .inicial, .embudo li::before, .hitos .anio, .datos dt { font-family: var(--texto); }
+.et, .cod, .entorno__cab .sigla, .causa b, .tabla thead th, .esquema__titulo { font-weight: 700; }
+.fichas .nueva, .cambio li.mas { border-color: #f2c199; }
+.sala--puente { border-color: #c96f23; }
+.solucion .n { color: var(--marca); }
+
+/* =====================================================================
+   Toque hecho a mano: menos cajas, subrayador, trazos irregulares
+   y notas del equipo con letra manuscrita.
+   ===================================================================== */
+
+:root {
+  --mano: "Caveat", "Segoe Print", "Bradley Hand", "Comic Sans MS", cursive;
+  --trazo: 255px 14px 225px 14px / 14px 225px 14px 255px;
+  --onda-naranja: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 120 12' preserveAspectRatio='none'%3E%3Cpath d='M2 7c10-6 18 5 28 0s18-6 28 0 18 5 28 0 20-5 32-1' fill='none' stroke='%23f08c3a' stroke-width='3' stroke-linecap='round'/%3E%3C/svg%3E");
+  --onda-tinta: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 48 8'%3E%3Cpath d='M0 4c6-5 6 5 12 0s6-5 12 0 6 5 12 0 6-5 12 0' fill='none' stroke='%231b2045' stroke-width='1.6' stroke-linecap='round'/%3E%3C/svg%3E");
+}
+
+/* Títulos de sección con un subrayado ondulado, no con una regla recta */
+.seccion > h2 { padding-bottom: 0.9rem; background: var(--onda-naranja) left bottom / 6.5rem 0.6rem no-repeat; }
+.cabecera { border-bottom: 0; padding-bottom: 2.6rem; background: var(--onda-tinta) left bottom / 48px 8px repeat-x; }
+.siguiente { border-top: 0; padding-top: 2.2rem; background: var(--onda-tinta) left top / 48px 8px repeat-x; }
+
+/* Rasgos: texto suelto con el título pasado por subrayador, sin caja */
+.rasgo { background: none; border: 0; border-radius: 0; padding: 0.2rem 0.2rem 0 0; }
+.rasgo h4 { display: inline; background: linear-gradient(transparent 58%, var(--marca-suave) 58%); box-decoration-break: clone; -webkit-box-decoration-break: clone; padding: 0 0.15rem; }
+.rasgo p { margin-top: 0.45rem; }
+
+/* Notas del equipo: papel pegado con cinta, borde irregular y letra a mano */
+.decision { position: relative; background: #fff7ee; border: 2px solid var(--tinta); border-left-width: 2px; border-radius: var(--trazo); padding: 1.5rem 1.6rem 1.3rem; transform: rotate(-0.45deg); margin-top: 2rem; }
+.decision::before { content: ""; position: absolute; top: -0.75rem; left: 2.2rem; width: 5.2rem; height: 1.4rem; background: rgba(185, 189, 232, 0.75); transform: rotate(-3deg); }
+.decision h4 { font-family: var(--mano); font-weight: 700; font-size: 1.55rem; line-height: 1.1; color: var(--pino); margin-bottom: 0.5rem; }
+.aviso { position: relative; background: #fff; border: 2px solid var(--corte); border-left-width: 2px; border-radius: var(--trazo); padding: 1.4rem 1.6rem 1.3rem; transform: rotate(0.35deg); margin-top: 2rem; }
+.aviso h4 { font-family: var(--mano); font-weight: 700; font-size: 1.55rem; line-height: 1.1; color: var(--corte); margin-bottom: 0.5rem; }
+
+/* Apuntes a mano junto a gráficos y figuras */
+.apunte { font-family: var(--mano); font-weight: 600; font-size: 1.35rem; line-height: 1.1; color: var(--pino); transform: rotate(-2deg); transform-origin: left center; margin: 0.9rem 0 0.2rem; max-width: none; }
+.apunte + .nota { margin-top: 0.2rem; }
+.apunte--linea { display: inline-block; margin: 0 0 0 0.5rem; font-size: 1.25rem; color: var(--corte); transform: rotate(-1.5deg); }
+.escala { position: relative; padding-top: 3.2rem; }
+.apunte--corte { position: absolute; top: 0; left: 30%; margin: 0; display: flex; align-items: flex-start; gap: 0.3rem; color: var(--tinta); font-size: 1.5rem; transform: rotate(-3deg); }
+.apunte--corte svg { width: 3.2rem; height: 2.4rem; margin-top: 0.5rem; }
+
+/* Comparativas y estrategias sin tarjeta alrededor, con el texto centrado como en las infografías */
+.versus { background: none; border: 0; border-radius: 0; padding: 0; }
+.versus > p { text-align: center; margin-inline: auto; max-width: 34ch; }
+.rotulo b { transform: rotate(-6deg); }
+.versus__vs { transform: translate(-50%, -50%) rotate(-8deg); }
+.tesela { background: none; border: 0; border-radius: 0; overflow: visible; }
+.tesela__texto { padding: 1rem 0.4rem 0; text-align: center; }
+.tesela__texto .ejemplo { background: none; padding: 0; font-family: var(--mano); font-size: 1.25rem; line-height: 1.15; color: var(--pino); }
+.tesela--1 .tesela__imagen { transform: rotate(-0.8deg); }
+.tesela--3 .tesela__imagen { transform: rotate(0.8deg); }
+
+/* Equipo: etiquetas con nombre, cada una un poco torcida */
+.equipo { gap: 1.1rem; }
+.equipo li { border: 2px solid var(--tinta); border-radius: var(--trazo); font-family: var(--mano); font-size: 1.5rem; padding: 0.8rem 1rem; }
+.equipo li:nth-child(1) { transform: rotate(-1.6deg); }
+.equipo li:nth-child(2) { transform: rotate(1.1deg); }
+.equipo li:nth-child(3) { transform: rotate(-0.7deg); }
+.equipo li:nth-child(4) { transform: rotate(1.8deg); }
+.equipo .inicial { font-family: var(--texto); font-size: 1rem; border-radius: 47% 53% 50% 50% / 52% 48% 52% 48%; }
+
+/* Pequeñas irregularidades en piezas repetidas */
+.mapa a { border-radius: 10px 10px 10px 2px; }
+.mapa li:nth-child(even) a { border-radius: 10px 10px 2px 10px; }
+.mapa a:hover { box-shadow: 4px 4px 0 var(--marca); border-color: var(--tinta); }
+.indice-pagina a { border-radius: var(--trazo); border-width: 1.5px; border-color: var(--tinta-3); }
+.rail nav a[aria-current="page"] { border-radius: var(--trazo); }
+.definicion { border-radius: 10px 10px 10px 2px; }
+.cabecera .parte, .mapa .parte { font-family: var(--mano); font-style: normal; font-weight: 700; font-size: 1.4rem; }
+
+@media (max-width: 56rem) {
+  .apunte--corte { left: 22%; font-size: 1.3rem; }
+  .decision, .aviso { transform: none; }
+  .equipo li { font-size: 1.35rem; }
+}
+@media (prefers-reduced-motion: reduce) { .mapa a:hover { box-shadow: none; } }
+.rejilla > .hoja { margin-top: 0; }
+
+/* =====================================================================
+   Reparto de espacios: menú arriba, todo sobre un mismo eje central
+   y una sola escala de separaciones para todo el sitio.
+   ===================================================================== */
+
+:root { --e1: 0.5rem; --e2: 1rem; --e3: 1.75rem; --e4: 3.25rem; --e5: 5.5rem; }
+
+/* Menú horizontal arriba: deja el contenido centrado en la página */
+.rail { position: sticky; inset: 0 0 auto 0; width: auto; flex-direction: row; flex-wrap: wrap; align-items: center; gap: 0.5rem 1.5rem; padding: 0.65rem 2rem; z-index: 20; overflow: visible; }
+.rail__titulo { font-size: 1.3rem; flex: none; }
+.rail__titulo span { display: none; }
+.rail nav { margin-left: auto; }
+.rail nav ul { display: flex; gap: 0.25rem; }
+.rail nav a { display: block; padding: 0.4rem 0.75rem; font-size: 0.86rem; line-height: 1.25; }
+.rail nav a small { display: block; font-size: 0.72rem; }
+.rail__pie { display: none; margin-top: 0; }
+.pagina { margin-left: 0; }
+.contenido { max-width: 64rem; margin-inline: auto; padding: 3.5rem 2rem 4.5rem; }
+.seccion, .apartado, .grupo-factor { scroll-margin-top: 5.5rem; }
+
+/* Un solo eje: cabeceras, títulos y textos de entrada van centrados */
+.cabecera { text-align: center; padding-bottom: 3.4rem; margin-bottom: 0; }
+.cabecera h1, .cabecera .entradilla, .portada h1 { margin-inline: auto; }
+.portada h1 { max-width: 18ch; }
+.cabecera .entradilla { max-width: 60ch; }
+.indice-pagina, .fichas, .leyenda, .causas { justify-content: center; }
+.seccion > h2 { text-align: center; background-position: center bottom; margin-bottom: 0; }
+.apartado > h3, .seccion > h3, .seccion > h4 { text-align: center; margin-bottom: 0; }
+.grupo-factor > h3 { justify-content: center; }
+.seccion > p, .apartado > p { max-width: 64ch; margin-inline: auto; text-align: center; }
+.fuente, .contenido .fuente { max-width: 76ch; margin-inline: auto; text-align: center; }
+.definicion { text-align: center; padding: 2rem 1.75rem; }
+.definicion p { max-width: 50ch; margin-inline: auto; }
+.rasgo { text-align: center; padding: 0 0.6rem; }
+.pie { text-align: center; margin-inline: auto; max-width: 70ch; }
+.embudo { margin-inline: auto; }
+.escalera { text-align: center; }
+.escalera__leyenda { justify-content: center; }
+.grafico { text-align: left; }
+.apunte--corte { left: 50%; margin-left: -9.5rem; }
+
+/* Notas y bloques sueltos: ancho de lectura cómodo y centrados */
+.contenido .decision, .contenido .aviso, .seccion > .hoja, .apartado > .hoja { max-width: 46rem; margin-inline: auto; }
+.decision p, .aviso p, .hoja p { max-width: none; }
+.hoja h4 + p, .hoja h4 + ul, .hoja h3 + ul { margin-top: 0.5rem; }
+.grafico .barras + .nota, .grafico .barras + .apunte { margin-top: 0.9rem; }
+
+/* Una sola escala de separaciones verticales */
+.seccion { margin-top: var(--e5); }
+.cabecera + .seccion { margin-top: var(--e4); }
+.seccion > * + *, .apartado > * + *, .grupo-factor > * + * { margin-top: var(--e3); }
+.seccion > .apartado, .seccion > .grupo-factor { margin-top: var(--e4); }
+.seccion > h2 + p, .apartado > h3 + p, .seccion > p + p, .apartado > p + p { margin-top: var(--e2); }
+.seccion > .fuente, .apartado > .fuente, .grupo-factor > .fuente { margin-top: var(--e2); }
+.contenido .decision, .contenido .aviso { margin-top: 2.4rem; }
+.escala { margin-top: var(--e3); }
+.rejilla, .balanza, .mapa, .equipo { gap: 1.25rem; }
+.siguiente { margin-top: var(--e5); }
+.pie { margin-top: var(--e3); }
+
+/* Mismo relleno interior en todas las piezas con caja */
+.hoja, .grafico, .problema, .factor__texto, .balanza > div, .simulador, .escalera { padding: 1.4rem 1.5rem 1.5rem; }
+.factor__texto { padding: 1.1rem 1.25rem 1.3rem; }
+.mapa a { padding: 1.3rem 1.4rem 1.4rem; }
+
+@media (max-width: 82rem) {
+  .rail { padding: 0.7rem 1rem; gap: 0.6rem; }
+  .rail__titulo { flex: 1; font-size: 1.15rem; }
+  .menu-boton { display: inline-flex; align-items: center; gap: 0.5rem; font: inherit; font-weight: 700; color: var(--tinta); background: var(--marca); border: 0; border-radius: 6px; padding: 0.5rem 0.9rem; cursor: pointer; }
+  .rail nav, .rail__pie { display: none; flex-basis: 100%; margin-left: 0; }
+  .rail[data-abierto="true"] nav, .rail[data-abierto="true"] .rail__pie { display: block; }
+  .rail[data-abierto="true"] nav { padding-top: 0.5rem; }
+  .rail nav ul { display: grid; gap: 0.15rem; }
+  .rail nav a { display: grid; grid-template-columns: 4.6rem 1fr; gap: 0.5rem; align-items: baseline; padding: 0.55rem 0.6rem; font-size: 0.97rem; }
+  .rail nav a small { font-size: 0.8rem; }
+}
+@media (max-width: 56rem) {
+  :root { --e3: 1.5rem; --e4: 2.6rem; --e5: 4rem; }
+  .contenido { padding: 2.2rem 1rem 3rem; }
+  .apunte--corte { left: 50%; margin-left: -8.5rem; }
+  .hoja, .grafico, .problema, .balanza > div, .simulador, .escalera { padding: 1.1rem 1.1rem 1.2rem; }
+}
+.rail nav a .breve { display: none; }
+@media (min-width: 82.01rem) {
+  .rail nav a { white-space: nowrap; font-size: 0.95rem; padding: 0.4rem 0.9rem; }
+  .rail nav a .largo { position: absolute; width: 1px; height: 1px; overflow: hidden; clip: rect(0 0 0 0); }
+  .rail nav a .breve { display: inline; }
+}
+.cabecera .parte { max-width: none; }
+.definicion .fuente { font-family: var(--texto); font-size: 0.86rem; font-weight: 400; line-height: 1.5; max-width: 64ch; margin-top: 1rem; }
+.escala { padding-top: 0; }
+.escala:has(.apunte--corte) { padding-top: 3.2rem; }
+.escala__leyenda { text-align: center; }
+.escalera .nota { max-width: none; }
+
+/* =====================================================================
+   Ajustes propios de TextiConect sobre el esquema común
+   ===================================================================== */
+
+/* Pespunte naranja: la costura recorre el borde inferior del menú */
+.rail::after { top: auto; left: 0; right: 0; bottom: 5px; border-right: 0; border-bottom: 2px dashed var(--marca); }
+.rail { padding-bottom: 1rem; }
+.esquema__costura, .plano__zona + .plano__zona { border-color: var(--marca); }
+
+/* Bloques que deben quedar centrados en el eje común */
+.ciclo, .embudo { margin-inline: auto; }
+.recorrido h3 { justify-content: center; }
+.recorrido .pasos li { text-align: left; }
+.seccion > ul, .apartado > ul { margin-inline: auto; }
+.entorno ul, .solucion ul { max-width: none; }
+
+/* Mismas esquinas algo irregulares que en el otro trabajo */
+.problema, .tec, .resistencia, .entorno { border-radius: 10px 10px 10px 2px; }
+.rejilla > :nth-child(even).problema, .rejilla > :nth-child(even).resistencia { border-radius: 10px 10px 2px 10px; }
+.boton { border-radius: var(--trazo); }
+.esquema, .seguimiento, .plano { border-radius: 12px 12px 12px 3px; }
+
+/* Relleno interior igual en las tarjetas propias */
+.problema, .tec, .resistencia, .entorno, .solucion, .fases li, .ciclo li { padding: 1.3rem 1.4rem 1.4rem; }
+.ciclo li { padding: 1.1rem 1.2rem 1.2rem; }
+.columna-tec, .recorrido { gap: 1.25rem; }
+@media (max-width: 56rem) {
+  .problema, .tec, .resistencia, .entorno, .solucion { padding: 1.1rem 1.1rem 1.2rem; }
+  .ciclo li { padding: 0.8rem 0.8rem 0.9rem; }
+}
+
+/* =====================================================================
+   Fotografías: todas en la misma proporción (2:1) y con el marco recto
+   ===================================================================== */
+
+:root { --foto: 2 / 1; }
+
+/* Foto en la parte alta de las tarjetas de entorno IT y OT */
+.entorno--foto { padding-top: 0; overflow: hidden; }
+.tarjeta__marco { aspect-ratio: var(--foto); overflow: hidden; margin: 0 -1.4rem 1.1rem; background: var(--suave, var(--lavanda-suave)); }
+.tarjeta__foto { display: block; width: 100%; height: 100%; object-fit: cover; }
+.tarjeta--sin-foto .tarjeta__foto { display: none; }
+@media (max-width: 56rem) { .tarjeta__marco { margin: 0 -1.1rem 1rem; } }
+
+/* Foto ancha: copia en papel sujeta con cinta y con pie a mano */
+.foto-banda { position: relative; margin: var(--e3) auto 0; max-width: 46rem; }
+.foto-banda img { display: block; box-sizing: border-box; width: 100%; height: auto; aspect-ratio: var(--foto); object-fit: cover; background: var(--lavanda-suave); border: 0.4rem solid #fff; border-radius: 3px; box-shadow: 0 0 0 1.5px var(--tinta), 5px 6px 0 var(--lavanda); }
+.foto-banda::before { content: ""; position: absolute; z-index: 1; top: -0.7rem; left: 50%; width: 6rem; height: 1.5rem; margin-left: -3rem; background: rgba(240, 140, 58, 0.72); transform: rotate(-2.5deg); }
+.foto-banda figcaption { display: flex; flex-wrap: wrap; justify-content: center; align-items: baseline; gap: 0.2rem 0.9rem; margin-top: 1rem; }
+.foto-banda__pie { font-family: var(--mano); font-weight: 600; font-size: 1.4rem; line-height: 1.15; color: var(--pino); }
+.foto-banda__credito { font-size: 0.8rem; color: var(--tinta-3); }
+.foto-banda__credito a { color: inherit; }
+.cabecera .foto-banda + .indice-pagina, .cabecera .foto-banda + .recorrido { margin-top: var(--e3); }
+.seccion > .foto-banda { margin-top: var(--e3); }
+@media (max-width: 56rem) {
+  .foto-banda img { border-width: 0.3rem; box-shadow: 0 0 0 1.5px var(--tinta), 3px 4px 0 var(--lavanda); }
+  .foto-banda__pie { font-size: 1.25rem; }
+}
+
+/* Nueve apartados en el menú superior: la lista no tiene tope de ancho y las etiquetas se ajustan */
+.rail nav ul { max-width: none; }
+@media (min-width: 82.01rem) {
+  .rail nav a { padding: 0.4rem 0.7rem; font-size: 0.9rem; }
+}
