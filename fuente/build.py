@@ -26,11 +26,27 @@ PAGINAS = [
      "Cómo responde el plan al cliente que quiere personalizar online y seguir su pedido."),
     ("7-data-driven.html", "Punto 7", "Ciclo Data-Driven", "7. Ciclo Data-Driven",
      "Qué datos se capturan, cómo se integran, qué se analiza y qué se decide."),
+    ("guion.html", "Anexo", "Guion de la exposición", "Guion de la exposición",
+     "Cómo se reparten la presentación los cuatro integrantes: qué dice cada uno y qué enseña."),
     ("glosario.html", "Anexo", "Glosario y fuentes", "Glosario y fuentes",
      "Términos usados en el plan y fuentes consultadas."),
 ]
 
 EQUIPO = "Marcos Ramos, Gonzalo Redondo, Jaime Ramos y Victor Cerveros"
+
+# Reparto de la exposición: cuatro bloques, uno por integrante, en el orden del enunciado
+# número, quién presenta, título del bloque, qué cubre, tiempo, páginas
+BLOQUES = [
+    ("1", "Marcos Ramos", "El caso y el diagnóstico", "Introducción y punto 1", "unos 2 minutos",
+     ["index.html", "1-diagnostico.html"]),
+    ("2", "Gonzalo Redondo", "IT, OT y la propuesta", "Puntos 2 y 3", "unos 2 minutos y medio",
+     ["2-it-ot.html", "3-propuesta.html"]),
+    ("3", "Jaime Ramos", "Convergencia y personas", "Puntos 4 y 5", "unos 2 minutos y medio",
+     ["4-convergencia.html", "5-impacto.html"]),
+    ("4", "Victor Cerveros", "El cliente y los datos", "Puntos 6 y 7, y cierre", "unos 2 minutos",
+     ["6-situacion.html", "7-data-driven.html"]),
+]
+ANEXOS = ["guion.html", "glosario.html"]
 
 # Iconos de trazo dibujados para este trabajo (24 × 24)
 ICONOS = {
@@ -68,8 +84,8 @@ PLANTILLA = """<!doctype html>
 <meta name="description" content="{descripcion}">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link rel="preload" as="style" href="https://fonts.googleapis.com/css2?family=Caveat:wght@500..700&family=Open+Sans:ital,wght@0,400..800;1,400&family=Playfair+Display:ital,wght@0,500..800;1,600&display=swap" onload="this.onload=null;this.rel='stylesheet'">
-<noscript><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Caveat:wght@500..700&family=Open+Sans:ital,wght@0,400..800;1,400&family=Playfair+Display:ital,wght@0,500..800;1,600&display=swap"></noscript>
+<link rel="preload" as="style" href="https://fonts.googleapis.com/css2?family=Archivo:wdth,wght@62..125,400..800&family=Literata:ital,opsz,wght@0,7..72,400..700;1,7..72,400&display=swap" onload="this.onload=null;this.rel='stylesheet'">
+<noscript><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Archivo:wdth,wght@62..125,400..800&family=Literata:ital,opsz,wght@0,7..72,400..700;1,7..72,400&display=swap"></noscript>
 <link rel="stylesheet" href="assets/estilos.css?v={v}">
 </head>
 <body>
@@ -77,12 +93,10 @@ PLANTILLA = """<!doctype html>
 <header class="rail" data-abierto="false">
   <a class="rail__titulo" href="index.html">TextiConect<span>Plan de digitalización y convergencia IT/OT de un taller textil</span></a>
   <button class="menu-boton" type="button" aria-expanded="false" aria-controls="menu">Menú</button>
-  <nav id="menu" aria-label="Puntos del trabajo">
-    <ul>
+  <nav id="menu" aria-label="Bloques de la exposición">
 {menu}
-    </ul>
   </nav>
-  <p class="rail__pie"><strong>Equipo</strong><br>{equipo}<br><br>UD1, Digitalización en los sistemas productivos<br>Curso 2026-2027</p>
+  <p class="rail__pie">UD1, Digitalización en los sistemas productivos. Curso 2026-2027</p>
 </header>
 <div class="pagina">
 <main class="contenido" id="contenido">
@@ -111,12 +125,52 @@ BREVES = {
 }
 
 
+def _enlace(archivo: str, actual: str) -> str:
+    _, corta, larga, _, _ = next(p for p in PAGINAS if p[0] == archivo)
+    marca = ' aria-current="page"' if archivo == actual else ""
+    etiqueta = "Inicio" if archivo == "index.html" else corta
+    return f'<li><a href="{archivo}"{marca}><small>{etiqueta}</small>{larga}</a></li>'
+
+
 def menu(actual: str) -> str:
+    """Menú agrupado por bloques de exposición, con quién presenta cada uno."""
+    grupos = []
+    for n, quien, titulo, _, _, paginas in BLOQUES:
+        enlaces = "".join(_enlace(a, actual) for a in paginas)
+        grupos.append(f'    <div class="bloque"><p class="bloque__cab"><span class="bloque__n">Bloque {n}</span> '
+                      f'<span class="bloque__quien">{quien}</span></p><ul>{enlaces}</ul></div>')
+    enlaces = "".join(_enlace(a, actual) for a in ANEXOS)
+    grupos.append(f'    <div class="bloque bloque--anexo"><p class="bloque__cab"><span class="bloque__n">Anexos</span></p><ul>{enlaces}</ul></div>')
+    return "\n".join(grupos)
+
+
+def bloque_de(archivo: str):
+    return next((b for b in BLOQUES if archivo in b[5]), None)
+
+
+def etiqueta(archivo: str) -> str:
+    """Etiqueta colgante de la cabecera: bloque, quién presenta y cuánto dura."""
+    b = bloque_de(archivo)
+    if not b:
+        return ""
+    n, quien, titulo, cubre, tiempo, _ = b
+    return (f'<p class="etiqueta"><span class="etiqueta__n">Bloque {n} de 4</span>'
+            f'<span class="etiqueta__quien">Presenta {quien}</span>'
+            f'<span class="etiqueta__tiempo">{cubre}, {tiempo}</span>'
+            f'<a class="etiqueta__guion" href="guion.html#bloque-{n}">Su guion</a></p>')
+
+
+def reparto() -> str:
+    """Tarjetas del reparto de la exposición para la portada."""
     filas = []
-    for archivo, corta, larga, _, _ in PAGINAS:
-        marca = ' aria-current="page"' if archivo == actual else ""
-        filas.append(f'      <li><a href="{archivo}"{marca}><small>{corta}</small><span class="largo">{larga}</span><span class="breve" aria-hidden="true">{BREVES[archivo]}</span></a></li>')
-    return "\n".join(filas)
+    for n, quien, titulo, cubre, tiempo, paginas in BLOQUES:
+        enlaces = "".join(f'<li><a href="{a}">{next(p for p in PAGINAS if p[0] == a)[2]}</a></li>' for a in paginas)
+        filas.append(f'  <li class="reparto__bloque"><span class="reparto__n">Bloque {n}</span>'
+                     f'<strong class="reparto__quien">{quien}</strong>'
+                     f'<span class="reparto__titulo">{titulo}</span>'
+                     f'<ul class="reparto__paginas">{enlaces}</ul>'
+                     f'<span class="reparto__tiempo">{tiempo.capitalize()}</span></li>')
+    return '<ol class="reparto">\n' + "\n".join(filas) + "\n</ol>"
 
 
 # Fotografías de Unsplash (licencia libre). Se sirven desde su servidor.
@@ -216,6 +270,9 @@ def main() -> None:
         cuerpo = re.sub(r"\{\{foto:([a-z]+)\}\}", lambda m: foto_tarjeta(m.group(1)), cuerpo)
         cuerpo = re.sub(r"\{\{banda:([a-z]+)\|([^}]+)\}\}", lambda m: foto_banda(m.group(1), m.group(2)), cuerpo)
         cuerpo = cuerpo.replace("{{creditos}}", creditos())
+        cuerpo = cuerpo.replace("{{reparto}}", reparto())
+        # etiqueta del bloque al principio de la cabecera
+        cuerpo = re.sub(r'(<header class="cabecera[^"]*">\n)', lambda m: m.group(1) + "  " + etiqueta(archivo) + "\n", cuerpo, count=1)
         # espacio de no separación entre la cifra y el signo de porcentaje
         cuerpo = re.sub(r"(\d) %", r"\1&nbsp;%", cuerpo)
         titulo_completo = titulo if archivo == "index.html" else f"{titulo} | TextiConect"

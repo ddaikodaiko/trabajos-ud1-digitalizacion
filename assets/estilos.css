@@ -1,30 +1,33 @@
 /* TextiConect — hoja de estilos del sitio
-   Paleta: índigo de tela vaquera, hilo dorado de pespunte,
-   azul para el entorno IT y magenta para el entorno OT. */
+   Estética de taller: verde de maquinaria industrial, amarillo de señalización
+   y dos hilos que identifican cada entorno: azul cobalto (IT) y rojo (OT).
+   Títulos y piezas en Archivo; texto corrido en Literata. */
 
 :root {
-  --papel: #f4f5f9;
+  --papel: #f1f2ee;
   --hoja: #ffffff;
-  --tinta: #161b33;
-  --tinta-2: #47506e;
-  --tinta-3: #6a7392;
-  --pino: #1b2a5c;
-  --pino-2: #2b3f85;
-  --linea: #d5d9e6;
-  --linea-2: #e7eaf2;
-  --it: #2a56c6;
-  --ot: #b8256e;
-  --it-suave: #e5ecfa;
-  --ot-suave: #f9e4ee;
+  --tinta: #1e2421;
+  --tinta-2: #4b534e;
+  --tinta-3: #6b736e;
+  --pino: #1f3a35;
+  --pino-2: #2d554d;
+  --linea: #d6d9d2;
+  --linea-2: #e7e9e3;
+  --it: #1d5bbf;
+  --ot: #c8323c;
+  --it-suave: #e3ebf9;
+  --ot-suave: #f9e3e4;
   --e: #1f8a5b;
   --e-suave: #e3f2ea;
-  --marca: #f2b705;
-  --marca-suave: #fdf3cf;
-  --corte: #c8372d;
-  --corte-suave: #fbe7e4;
-  --display: "Barlow Semi Condensed", "Arial Narrow", "Helvetica Neue", Arial, sans-serif;
-  --texto: "Barlow", "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
-  --ancho-rail: 17.5rem;
+  --marca: #f5c21b;
+  --marca-suave: #fdf3c9;
+  --corte: #b4531a;
+  --corte-suave: #fbeadf;
+  --display: "Archivo", "Arial Narrow", "Helvetica Neue", Arial, sans-serif;
+  --texto: "Literata", Georgia, "Times New Roman", serif;
+  --ancho-rail: 18rem;
+  --costura: repeating-linear-gradient(90deg, var(--it) 0 11px, transparent 11px 17px, var(--ot) 17px 28px, transparent 28px 34px);
+  --foto: 2 / 1;
   color-scheme: light;
 }
 
@@ -543,283 +546,172 @@ figure { margin-inline: 0; }
 .tabla td:has(> .et:first-child):not(:has(strong)) { white-space: nowrap; }
 .matriz th.celda { white-space: nowrap; }
 
-/* =====================================================================
-   Mismo esquema estético que el trabajo de Sostenibilidad:
-   índigo, naranja y lavanda; Playfair Display en títulos, Open Sans
-   en el texto y Caveat para lo escrito a mano. Azul (IT) y magenta
-   (OT) se mantienen porque identifican cada entorno.
-   ===================================================================== */
-
-:root {
-  --papel: #f7f7fc;
-  --tinta: #1b2045;
-  --tinta-2: #474c6e;
-  --tinta-3: #6c7193;
-  --pino: #2f3c8f;
-  --pino-2: #3f4eb0;
-  --azul-titulo: #1f3d7a;
-  --lavanda: #b9bde8;
-  --lavanda-suave: #eceefb;
-  --linea: #d9dbec;
-  --linea-2: #e9eaf5;
-  --marca: #f08c3a;
-  --marca-suave: #fdebdc;
-  --display: "Playfair Display", Georgia, "Times New Roman", serif;
-  --texto: "Open Sans", "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
-}
-
-h1 { font-weight: 700; letter-spacing: 0; }
-h2 { font-weight: 500; text-transform: uppercase; letter-spacing: 0.01em; font-size: clamp(1.35rem, 2.3vw, 1.8rem); line-height: 1.2; }
-h3 { font-weight: 600; color: var(--azul-titulo); }
-.solucion h3, .balanza h3 { color: var(--tinta); }
-.rail { color: #eef0fb; }
-.rail__titulo span, .rail__pie { color: #c3c8ee; }
-.rail nav a { color: #eef0fb; }
-.rail nav a small { color: #b3b9e6; }
-.rail nav a[aria-current="page"] small { color: #3a2a14; }
-.seccion > h2 .de-enunciado, .apartado > h3 .de-enunciado { color: var(--marca); }
-.cabecera .parte { font-style: italic; }
-.definicion .fuente { color: #c3c8ee; }
-
-/* Las piezas pequeñas (siglas, códigos, números) van en la letra del texto */
-.et, .cod, .entorno__cab .sigla, .causa b, .pasos li::before, .pasos .sello, .fases li::before,
-.esquema__titulo, .tabla thead th, .seguimiento__barra strong, .ciclo li .num, .solucion .n,
-.equipo .inicial, .embudo li::before, .hitos .anio, .datos dt { font-family: var(--texto); }
-.et, .cod, .entorno__cab .sigla, .causa b, .tabla thead th, .esquema__titulo { font-weight: 700; }
-.fichas .nueva, .cambio li.mas { border-color: #f2c199; }
-.sala--puente { border-color: #c96f23; }
-.solucion .n { color: var(--marca); }
 
 /* =====================================================================
-   Toque hecho a mano: menos cajas, subrayador, trazos irregulares
-   y notas del equipo con letra manuscrita.
+   Tipografía y ritmo
    ===================================================================== */
 
-:root {
-  --mano: "Caveat", "Segoe Print", "Bradley Hand", "Comic Sans MS", cursive;
-  --trazo: 255px 14px 225px 14px / 14px 225px 14px 255px;
-  --onda-naranja: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 120 12' preserveAspectRatio='none'%3E%3Cpath d='M2 7c10-6 18 5 28 0s18-6 28 0 18 5 28 0 20-5 32-1' fill='none' stroke='%23f08c3a' stroke-width='3' stroke-linecap='round'/%3E%3C/svg%3E");
-  --onda-tinta: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 48 8'%3E%3Cpath d='M0 4c6-5 6 5 12 0s6-5 12 0 6 5 12 0 6-5 12 0' fill='none' stroke='%231b2045' stroke-width='1.6' stroke-linecap='round'/%3E%3C/svg%3E");
-}
+body { font-size: 1.03rem; line-height: 1.65; }
+:focus-visible { outline: 3px solid var(--it); }
+h1 { font-weight: 800; font-stretch: 112%; letter-spacing: -0.015em; font-size: clamp(2.2rem, 4.4vw, 3.3rem); line-height: 1.04; }
+h2 { font-weight: 700; font-stretch: 106%; letter-spacing: -0.01em; font-size: clamp(1.45rem, 2.4vw, 1.85rem); }
+h3 { font-weight: 700; font-size: 1.2rem; }
+h4 { font-family: var(--display); font-weight: 700; font-size: 1.02rem; }
+.entradilla { font-size: 1.18rem; color: var(--tinta-2); }
 
-/* Títulos de sección con un subrayado ondulado, no con una regla recta */
-.seccion > h2 { padding-bottom: 0.9rem; background: var(--onda-naranja) left bottom / 6.5rem 0.6rem no-repeat; }
-.cabecera { border-bottom: 0; padding-bottom: 2.6rem; background: var(--onda-tinta) left bottom / 48px 8px repeat-x; }
-.siguiente { border-top: 0; padding-top: 2.2rem; background: var(--onda-tinta) left top / 48px 8px repeat-x; }
+/* Piezas densas en la letra de títulos, más compacta que la del texto */
+.tabla, .pasos, .caja, .sala, .fichas, .datos, .rail, .indice-pagina, .hitos-seg, .seguimiento__barra,
+.esquema__cliente, .viaje, .nucleo, .fases, .leyenda, .barras, .avance, .siguiente, .pie, .fuente, .nota,
+.refs, .causa, .boton, .problema dt, .tec dt, .tec .resuelve, .balanza .prueba { font-family: var(--display); }
+.tabla table { font-size: 0.93rem; }
 
-/* Rasgos: texto suelto con el título pasado por subrayador, sin caja */
-.rasgo { background: none; border: 0; border-radius: 0; padding: 0.2rem 0.2rem 0 0; }
-.rasgo h4 { display: inline; background: linear-gradient(transparent 58%, var(--marca-suave) 58%); box-decoration-break: clone; -webkit-box-decoration-break: clone; padding: 0 0.15rem; }
-.rasgo p { margin-top: 0.45rem; }
+/* Esquinas: más cerradas que antes y según el tamaño de la pieza */
+.hoja, .rasgo, .tabla, .grafico, .problema, .tec, .entorno, .resistencia, .balanza > div, .datos, .cambio > div, .refs li, .fases li { border-radius: 6px; }
+.esquema, .seguimiento, .plano, .ciclo li, .solucion, .definicion { border-radius: 8px; }
+.indice-pagina a { border-radius: 4px; border-color: var(--linea); }
+.indice-pagina a:hover { border-color: var(--tinta); color: var(--tinta); }
 
-/* Notas del equipo: papel pegado con cinta, borde irregular y letra a mano */
-.decision { position: relative; background: #fff7ee; border: 2px solid var(--tinta); border-left-width: 2px; border-radius: var(--trazo); padding: 1.5rem 1.6rem 1.3rem; transform: rotate(-0.45deg); margin-top: 2rem; }
-.decision::before { content: ""; position: absolute; top: -0.75rem; left: 2.2rem; width: 5.2rem; height: 1.4rem; background: rgba(185, 189, 232, 0.75); transform: rotate(-3deg); }
-.decision h4 { font-family: var(--mano); font-weight: 700; font-size: 1.55rem; line-height: 1.1; color: var(--pino); margin-bottom: 0.5rem; }
-.aviso { position: relative; background: #fff; border: 2px solid var(--corte); border-left-width: 2px; border-radius: var(--trazo); padding: 1.4rem 1.6rem 1.3rem; transform: rotate(0.35deg); margin-top: 2rem; }
-.aviso h4 { font-family: var(--mano); font-weight: 700; font-size: 1.55rem; line-height: 1.1; color: var(--corte); margin-bottom: 0.5rem; }
-
-/* Apuntes a mano junto a gráficos y figuras */
-.apunte { font-family: var(--mano); font-weight: 600; font-size: 1.35rem; line-height: 1.1; color: var(--pino); transform: rotate(-2deg); transform-origin: left center; margin: 0.9rem 0 0.2rem; max-width: none; }
-.apunte + .nota { margin-top: 0.2rem; }
-.apunte--linea { display: inline-block; margin: 0 0 0 0.5rem; font-size: 1.25rem; color: var(--corte); transform: rotate(-1.5deg); }
-.escala { position: relative; padding-top: 3.2rem; }
-.apunte--corte { position: absolute; top: 0; left: 30%; margin: 0; display: flex; align-items: flex-start; gap: 0.3rem; color: var(--tinta); font-size: 1.5rem; transform: rotate(-3deg); }
-.apunte--corte svg { width: 3.2rem; height: 2.4rem; margin-top: 0.5rem; }
-
-/* Comparativas y estrategias sin tarjeta alrededor, con el texto centrado como en las infografías */
-.versus { background: none; border: 0; border-radius: 0; padding: 0; }
-.versus > p { text-align: center; margin-inline: auto; max-width: 34ch; }
-.rotulo b { transform: rotate(-6deg); }
-.versus__vs { transform: translate(-50%, -50%) rotate(-8deg); }
-.tesela { background: none; border: 0; border-radius: 0; overflow: visible; }
-.tesela__texto { padding: 1rem 0.4rem 0; text-align: center; }
-.tesela__texto .ejemplo { background: none; padding: 0; font-family: var(--mano); font-size: 1.25rem; line-height: 1.15; color: var(--pino); }
-.tesela--1 .tesela__imagen { transform: rotate(-0.8deg); }
-.tesela--3 .tesela__imagen { transform: rotate(0.8deg); }
-
-/* Equipo: etiquetas con nombre, cada una un poco torcida */
-.equipo { gap: 1.1rem; }
-.equipo li { border: 2px solid var(--tinta); border-radius: var(--trazo); font-family: var(--mano); font-size: 1.5rem; padding: 0.8rem 1rem; }
-.equipo li:nth-child(1) { transform: rotate(-1.6deg); }
-.equipo li:nth-child(2) { transform: rotate(1.1deg); }
-.equipo li:nth-child(3) { transform: rotate(-0.7deg); }
-.equipo li:nth-child(4) { transform: rotate(1.8deg); }
-.equipo .inicial { font-family: var(--texto); font-size: 1rem; border-radius: 47% 53% 50% 50% / 52% 48% 52% 48%; }
-
-/* Pequeñas irregularidades en piezas repetidas */
-.mapa a { border-radius: 10px 10px 10px 2px; }
-.mapa li:nth-child(even) a { border-radius: 10px 10px 2px 10px; }
-.mapa a:hover { box-shadow: 4px 4px 0 var(--marca); border-color: var(--tinta); }
-.indice-pagina a { border-radius: var(--trazo); border-width: 1.5px; border-color: var(--tinta-3); }
-.rail nav a[aria-current="page"] { border-radius: var(--trazo); }
-.definicion { border-radius: 10px 10px 10px 2px; }
-.cabecera .parte, .mapa .parte { font-family: var(--mano); font-style: normal; font-weight: 700; font-size: 1.4rem; }
-
-@media (max-width: 56rem) {
-  .apunte--corte { left: 22%; font-size: 1.3rem; }
-  .decision, .aviso { transform: none; }
-  .equipo li { font-size: 1.35rem; }
-}
-@media (prefers-reduced-motion: reduce) { .mapa a:hover { box-shadow: none; } }
-.rejilla > .hoja { margin-top: 0; }
+/* Colores fijos de la hoja original que pasan a la nueva paleta */
+.pasos li.mano .sello { color: #8f1f27; }
+.solucion .responde, .flujo li.final, .embudo li.resultado { color: #d3d9d3; }
+.definicion .fuente { color: #c4ccc6; }
+.definicion .fuente a { color: #fff; }
+.fichas .nueva, .cambio li.mas { border-color: #e2b30f; }
 
 /* =====================================================================
-   Reparto de espacios: menú arriba, todo sobre un mismo eje central
-   y una sola escala de separaciones para todo el sitio.
+   Barra lateral: el menú se agrupa por bloque de la exposición
    ===================================================================== */
 
-:root { --e1: 0.5rem; --e2: 1rem; --e3: 1.75rem; --e4: 3.25rem; --e5: 5.5rem; }
-
-/* Menú horizontal arriba: deja el contenido centrado en la página */
-.rail { position: sticky; inset: 0 0 auto 0; width: auto; flex-direction: row; flex-wrap: wrap; align-items: center; gap: 0.5rem 1.5rem; padding: 0.65rem 2rem; z-index: 20; overflow: visible; }
-.rail__titulo { font-size: 1.3rem; flex: none; }
-.rail__titulo span { display: none; }
-.rail nav { margin-left: auto; }
-.rail nav ul { display: flex; gap: 0.25rem; }
-.rail nav a { display: block; padding: 0.4rem 0.75rem; font-size: 0.86rem; line-height: 1.25; }
-.rail nav a small { display: block; font-size: 0.72rem; }
-.rail__pie { display: none; margin-top: 0; }
-.pagina { margin-left: 0; }
-.contenido { max-width: 64rem; margin-inline: auto; padding: 3.5rem 2rem 4.5rem; }
-.seccion, .apartado, .grupo-factor { scroll-margin-top: 5.5rem; }
-
-/* Un solo eje: cabeceras, títulos y textos de entrada van centrados */
-.cabecera { text-align: center; padding-bottom: 3.4rem; margin-bottom: 0; }
-.cabecera h1, .cabecera .entradilla, .portada h1 { margin-inline: auto; }
-.portada h1 { max-width: 18ch; }
-.cabecera .entradilla { max-width: 60ch; }
-.indice-pagina, .fichas, .leyenda, .causas { justify-content: center; }
-.seccion > h2 { text-align: center; background-position: center bottom; margin-bottom: 0; }
-.apartado > h3, .seccion > h3, .seccion > h4 { text-align: center; margin-bottom: 0; }
-.grupo-factor > h3 { justify-content: center; }
-.seccion > p, .apartado > p { max-width: 64ch; margin-inline: auto; text-align: center; }
-.fuente, .contenido .fuente { max-width: 76ch; margin-inline: auto; text-align: center; }
-.definicion { text-align: center; padding: 2rem 1.75rem; }
-.definicion p { max-width: 50ch; margin-inline: auto; }
-.rasgo { text-align: center; padding: 0 0.6rem; }
-.pie { text-align: center; margin-inline: auto; max-width: 70ch; }
-.embudo { margin-inline: auto; }
-.escalera { text-align: center; }
-.escalera__leyenda { justify-content: center; }
-.grafico { text-align: left; }
-.apunte--corte { left: 50%; margin-left: -9.5rem; }
-
-/* Notas y bloques sueltos: ancho de lectura cómodo y centrados */
-.contenido .decision, .contenido .aviso, .seccion > .hoja, .apartado > .hoja { max-width: 46rem; margin-inline: auto; }
-.decision p, .aviso p, .hoja p { max-width: none; }
-.hoja h4 + p, .hoja h4 + ul, .hoja h3 + ul { margin-top: 0.5rem; }
-.grafico .barras + .nota, .grafico .barras + .apunte { margin-top: 0.9rem; }
-
-/* Una sola escala de separaciones verticales */
-.seccion { margin-top: var(--e5); }
-.cabecera + .seccion { margin-top: var(--e4); }
-.seccion > * + *, .apartado > * + *, .grupo-factor > * + * { margin-top: var(--e3); }
-.seccion > .apartado, .seccion > .grupo-factor { margin-top: var(--e4); }
-.seccion > h2 + p, .apartado > h3 + p, .seccion > p + p, .apartado > p + p { margin-top: var(--e2); }
-.seccion > .fuente, .apartado > .fuente, .grupo-factor > .fuente { margin-top: var(--e2); }
-.contenido .decision, .contenido .aviso { margin-top: 2.4rem; }
-.escala { margin-top: var(--e3); }
-.rejilla, .balanza, .mapa, .equipo { gap: 1.25rem; }
-.siguiente { margin-top: var(--e5); }
-.pie { margin-top: var(--e3); }
-
-/* Mismo relleno interior en todas las piezas con caja */
-.hoja, .grafico, .problema, .factor__texto, .balanza > div, .simulador, .escalera { padding: 1.4rem 1.5rem 1.5rem; }
-.factor__texto { padding: 1.1rem 1.25rem 1.3rem; }
-.mapa a { padding: 1.3rem 1.4rem 1.4rem; }
-
-@media (max-width: 82rem) {
-  .rail { padding: 0.7rem 1rem; gap: 0.6rem; }
-  .rail__titulo { flex: 1; font-size: 1.15rem; }
-  .menu-boton { display: inline-flex; align-items: center; gap: 0.5rem; font: inherit; font-weight: 700; color: var(--tinta); background: var(--marca); border: 0; border-radius: 6px; padding: 0.5rem 0.9rem; cursor: pointer; }
-  .rail nav, .rail__pie { display: none; flex-basis: 100%; margin-left: 0; }
-  .rail[data-abierto="true"] nav, .rail[data-abierto="true"] .rail__pie { display: block; }
-  .rail[data-abierto="true"] nav { padding-top: 0.5rem; }
-  .rail nav ul { display: grid; gap: 0.15rem; }
-  .rail nav a { display: grid; grid-template-columns: 4.6rem 1fr; gap: 0.5rem; align-items: baseline; padding: 0.55rem 0.6rem; font-size: 0.97rem; }
-  .rail nav a small { font-size: 0.8rem; }
-}
-@media (max-width: 56rem) {
-  :root { --e3: 1.5rem; --e4: 2.6rem; --e5: 4rem; }
-  .contenido { padding: 2.2rem 1rem 3rem; }
-  .apunte--corte { left: 50%; margin-left: -8.5rem; }
-  .hoja, .grafico, .problema, .balanza > div, .simulador, .escalera { padding: 1.1rem 1.1rem 1.2rem; }
-}
-.rail nav a .breve { display: none; }
-@media (min-width: 82.01rem) {
-  .rail nav a { white-space: nowrap; font-size: 0.95rem; padding: 0.4rem 0.9rem; }
-  .rail nav a .largo { position: absolute; width: 1px; height: 1px; overflow: hidden; clip: rect(0 0 0 0); }
-  .rail nav a .breve { display: inline; }
-}
-.cabecera .parte { max-width: none; }
-.definicion .fuente { font-family: var(--texto); font-size: 0.86rem; font-weight: 400; line-height: 1.5; max-width: 64ch; margin-top: 1rem; }
-.escala { padding-top: 0; }
-.escala:has(.apunte--corte) { padding-top: 3.2rem; }
-.escala__leyenda { text-align: center; }
-.escalera .nota { max-width: none; }
+.rail { background: var(--pino); color: #e8ece9; padding: 1.6rem 1.9rem 1.4rem 1.2rem; gap: 1.4rem; }
+.rail__titulo { font-family: var(--display); font-weight: 800; font-stretch: 115%; font-size: 1.5rem; letter-spacing: -0.01em; }
+.rail__titulo span { font-stretch: 100%; font-weight: 400; color: #b8c4bf; }
+@media (min-width: 56.01rem) { .rail nav { display: grid; gap: 1.15rem; } }
+.bloque__cab { margin: 0 0 0.3rem; padding: 0 0.6rem 0.35rem; max-width: none; display: flex; justify-content: space-between; align-items: baseline; gap: 0.6rem; border-bottom: 1px solid rgba(255, 255, 255, 0.16); font-size: 0.8rem; line-height: 1.3; }
+.bloque__n { font-weight: 800; color: var(--marca); }
+.bloque__quien { font-weight: 600; color: #fff; text-align: right; }
+.bloque--anexo .bloque__n { color: #b8c4bf; }
+.rail nav ul { gap: 0.1rem; max-width: none; }
+.rail nav a { grid-template-columns: 3.7rem 1fr; padding: 0.42rem 0.6rem; font-size: 0.93rem; color: #e8ece9; }
+.rail nav a small { color: #9fb0a9; font-size: 0.78rem; }
+.rail nav a:hover { background: rgba(255, 255, 255, 0.08); }
+.rail nav a[aria-current="page"] { background: var(--marca); color: var(--tinta); }
+.rail nav a[aria-current="page"] small { color: #5b4700; }
+.rail__pie { color: #b8c4bf; }
+.contenido { max-width: 60rem; padding: 2.6rem 3.5rem 4rem; }
 
 /* =====================================================================
-   Ajustes propios de TextiConect sobre el esquema común
+   Cabecera: etiqueta colgante con el bloque y quién lo presenta,
+   y una costura de dos hilos (IT y OT) que la cierra
    ===================================================================== */
 
-/* Pespunte naranja: la costura recorre el borde inferior del menú */
-.rail::after { top: auto; left: 0; right: 0; bottom: 5px; border-right: 0; border-bottom: 2px dashed var(--marca); }
-.rail { padding-bottom: 1rem; }
-.esquema__costura, .plano__zona + .plano__zona { border-color: var(--marca); }
+.cabecera { border-bottom: 0; padding-bottom: 0; margin-bottom: 0; }
+.cabecera::after { content: ""; display: block; height: 3px; margin-top: 2.4rem; background: var(--costura); }
+.cabecera .parte { font-family: var(--display); font-weight: 700; font-size: 0.95rem; color: var(--tinta-2); margin-bottom: 0.5rem; }
 
-/* Bloques que deben quedar centrados en el eje común */
-.ciclo, .embudo { margin-inline: auto; }
-.recorrido h3 { justify-content: center; }
-.recorrido .pasos li { text-align: left; }
-.seccion > ul, .apartado > ul { margin-inline: auto; }
-.entorno ul, .solucion ul { max-width: none; }
+.etiqueta { position: relative; display: inline-flex; flex-wrap: wrap; align-items: center; gap: 0.3rem 1rem; margin: 0 0 1.7rem; padding: 0.55rem 1.1rem 0.55rem 2.35rem; max-width: 100%; background: var(--hoja); border: 1.5px solid var(--tinta); border-radius: 3px 12px 12px 3px; font-family: var(--display); font-size: 0.88rem; line-height: 1.3; }
+.etiqueta::before { content: ""; position: absolute; left: 0.8rem; top: 50%; width: 0.72rem; height: 0.72rem; margin-top: -0.36rem; border-radius: 50%; border: 1.5px solid var(--tinta); background: var(--papel); }
+.etiqueta__n { font-weight: 800; background: var(--marca); padding: 0.08rem 0.45rem; border-radius: 3px; }
+.etiqueta__quien { font-weight: 700; }
+.etiqueta__tiempo { color: var(--tinta-2); }
+.etiqueta__guion { font-weight: 600; color: var(--tinta); }
 
-/* Mismas esquinas algo irregulares que en el otro trabajo */
-.problema, .tec, .resistencia, .entorno { border-radius: 10px 10px 10px 2px; }
-.rejilla > :nth-child(even).problema, .rejilla > :nth-child(even).resistencia { border-radius: 10px 10px 2px 10px; }
-.boton { border-radius: var(--trazo); }
-.esquema, .seguimiento, .plano { border-radius: 12px 12px 12px 3px; }
+/* Títulos de sección con una puntada de los dos hilos debajo */
+.seccion { margin-top: 3.5rem; }
+.cabecera + .seccion { margin-top: 2.8rem; }
+.seccion > h2 { padding-bottom: 0.7rem; margin-bottom: 1.1rem; background: var(--costura) left bottom / 6.8rem 3px no-repeat; }
+.siguiente { border-top: 0; padding-top: 1.6rem; background: var(--costura) left top / 100% 3px no-repeat; }
+.cabecera { background: none; }
 
-/* Relleno interior igual en las tarjetas propias */
-.problema, .tec, .resistencia, .entorno, .solucion, .fases li, .ciclo li { padding: 1.3rem 1.4rem 1.4rem; }
-.ciclo li { padding: 1.1rem 1.2rem 1.2rem; }
-.columna-tec, .recorrido { gap: 1.25rem; }
-@media (max-width: 56rem) {
-  .problema, .tec, .resistencia, .entorno, .solucion { padding: 1.1rem 1.1rem 1.2rem; }
-  .ciclo li { padding: 0.8rem 0.8rem 0.9rem; }
-}
+/* Plano y esquema: la frontera entre oficina y taller es una costura */
+.plano__zona + .plano__zona { border-left: 3px dashed var(--tinta-3); }
+.esquema__costura { border-top: 3px dashed var(--tinta-3); border-bottom: 3px dashed var(--tinta-3); background: var(--marca-suave); }
+.rail::after { border-right-color: var(--marca); }
 
 /* =====================================================================
-   Fotografías: todas en la misma proporción (2:1) y con el marco recto
+   Reparto de la exposición (portada)
    ===================================================================== */
 
-:root { --foto: 2 / 1; }
+.reparto { list-style: none; padding: 0; margin: 1.5rem 0 0; max-width: none; display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 0.9rem; }
+.reparto__bloque { margin: 0; position: relative; display: flex; flex-direction: column; gap: 0.25rem; background: var(--hoja); border: 1.5px solid var(--tinta); border-radius: 3px 3px 12px 12px; padding: 1.9rem 1rem 1rem; }
+.reparto__bloque::before { content: ""; position: absolute; left: 50%; top: 0.6rem; width: 0.72rem; height: 0.72rem; margin-left: -0.36rem; border-radius: 50%; border: 1.5px solid var(--tinta); background: var(--papel); }
+.reparto__n { align-self: flex-start; font-family: var(--display); font-weight: 800; font-size: 0.85rem; background: var(--marca); padding: 0.05rem 0.45rem; border-radius: 3px; }
+.reparto__quien { font-family: var(--display); font-weight: 800; font-stretch: 108%; font-size: 1.15rem; line-height: 1.15; margin-top: 0.4rem; }
+.reparto__titulo { font-size: 0.95rem; line-height: 1.35; color: var(--tinta-2); }
+.reparto__paginas { list-style: none; padding: 0; margin: 0.6rem 0 0; display: grid; gap: 0.2rem; font-family: var(--display); font-size: 0.9rem; max-width: none; }
+.reparto__paginas li { margin: 0; }
+.reparto__tiempo { margin-top: auto; padding-top: 0.7rem; font-family: var(--display); font-size: 0.85rem; color: var(--tinta-3); }
 
-/* Foto en la parte alta de las tarjetas de entorno IT y OT */
-.entorno--foto { padding-top: 0; overflow: hidden; }
-.tarjeta__marco { aspect-ratio: var(--foto); overflow: hidden; margin: 0 -1.4rem 1.1rem; background: var(--suave, var(--lavanda-suave)); }
-.tarjeta__foto { display: block; width: 100%; height: 100%; object-fit: cover; }
-.tarjeta--sin-foto .tarjeta__foto { display: none; }
-@media (max-width: 56rem) { .tarjeta__marco { margin: 0 -1.1rem 1rem; } }
+/* =====================================================================
+   Guion de la exposición
+   ===================================================================== */
 
-/* Foto ancha: copia en papel sujeta con cinta y con pie a mano */
-.foto-banda { position: relative; margin: var(--e3) auto 0; max-width: 46rem; }
-.foto-banda img { display: block; box-sizing: border-box; width: 100%; height: auto; aspect-ratio: var(--foto); object-fit: cover; background: var(--lavanda-suave); border: 0.4rem solid #fff; border-radius: 3px; box-shadow: 0 0 0 1.5px var(--tinta), 5px 6px 0 var(--lavanda); }
-.foto-banda::before { content: ""; position: absolute; z-index: 1; top: -0.7rem; left: 50%; width: 6rem; height: 1.5rem; margin-left: -3rem; background: rgba(240, 140, 58, 0.72); transform: rotate(-2.5deg); }
-.foto-banda figcaption { display: flex; flex-wrap: wrap; justify-content: center; align-items: baseline; gap: 0.2rem 0.9rem; margin-top: 1rem; }
-.foto-banda__pie { font-family: var(--mano); font-weight: 600; font-size: 1.4rem; line-height: 1.15; color: var(--pino); }
+.reglas { list-style: none; padding: 0; display: grid; gap: 0.6rem; max-width: 46rem; }
+.reglas li { margin: 0; background: var(--hoja); border: 1px solid var(--linea); border-radius: 6px; padding: 0.8rem 1rem; }
+.guion__ficha { margin: 0; display: grid; grid-template-columns: auto auto minmax(0, 1fr); background: var(--hoja); border: 1.5px solid var(--tinta); border-radius: 6px; overflow: hidden; font-family: var(--display); }
+.guion__ficha > div { padding: 0.6rem 0.95rem; border-right: 1px solid var(--linea); }
+.guion__ficha > div:last-child { border-right: 0; }
+.guion__ficha dt { font-size: 0.78rem; color: var(--tinta-3); }
+.guion__ficha dd { margin: 0; font-weight: 600; line-height: 1.35; }
+.guion__ficha > div:first-child dd { background: var(--marca); display: inline-block; padding: 0 0.4rem; border-radius: 3px; }
+.guion__ideas { list-style: none; padding: 0; margin: 1.3rem 0 0; max-width: 46rem; display: grid; gap: 0.75rem; counter-reset: idea; }
+.guion__ideas li { margin: 0; position: relative; padding-left: 2.7rem; counter-increment: idea; }
+.guion__ideas li::before { content: counter(idea); position: absolute; left: 0; top: 0.1rem; width: 1.8rem; height: 1.8rem; border-radius: 50%; border: 1.5px solid var(--tinta); display: grid; place-items: center; font-family: var(--display); font-weight: 700; font-size: 0.85rem; background: var(--hoja); }
+.guion__gesto { display: inline-block; margin-right: 0.35rem; padding: 0 0.4rem; border-radius: 3px; background: var(--marca-suave); font-family: var(--display); font-weight: 700; font-size: 0.86rem; }
+.guion__relevo { margin-top: 1.2rem; max-width: 46rem; padding: 0.85rem 1.1rem; background: var(--pino); color: #eef2ef; border-radius: 6px; }
+.guion__relevo strong { color: var(--marca); font-family: var(--display); }
+.preguntas { margin-top: 1.5rem; max-width: 46rem; }
+.preguntas h3 { font-size: 1.05rem; margin-bottom: 0.4rem; }
+.preguntas details { border-top: 1px solid var(--linea); padding: 0.55rem 0; }
+.preguntas details:last-child { border-bottom: 1px solid var(--linea); }
+.preguntas summary { cursor: pointer; font-family: var(--display); font-weight: 600; }
+.preguntas details p { margin-top: 0.35rem; color: var(--tinta-2); }
+.seccion.guion > h2 + .guion__ficha { margin-top: 1.3rem; }
+
+/* =====================================================================
+   Fotografías: todas en proporción 2:1, con un borde limpio y el pie
+   marcado con el amarillo de señalización
+   ===================================================================== */
+
+.foto-banda { margin: 2rem 0 0; max-width: 48rem; }
+.foto-banda img { display: block; width: 100%; height: auto; aspect-ratio: var(--foto); object-fit: cover; background: var(--linea-2); border-radius: 6px; }
+.foto-banda figcaption { display: flex; flex-wrap: wrap; align-items: baseline; gap: 0.15rem 0.8rem; margin-top: 0.65rem; padding-left: 0.8rem; border-left: 3px solid var(--marca); font-family: var(--display); }
+.foto-banda__pie { font-weight: 600; font-size: 0.98rem; color: var(--tinta); }
+.foto-banda__pie::first-letter { text-transform: uppercase; }
 .foto-banda__credito { font-size: 0.8rem; color: var(--tinta-3); }
 .foto-banda__credito a { color: inherit; }
-.cabecera .foto-banda + .indice-pagina, .cabecera .foto-banda + .recorrido { margin-top: var(--e3); }
-.seccion > .foto-banda { margin-top: var(--e3); }
+.cabecera .foto-banda + .indice-pagina, .cabecera .foto-banda + .recorrido { margin-top: 1.8rem; }
+.seccion > .foto-banda { margin-top: 1.4rem; }
+
+.entorno--foto { padding-top: 0; overflow: hidden; }
+.tarjeta__marco { aspect-ratio: var(--foto); overflow: hidden; margin: 0 -1.25rem 1.1rem; background: var(--suave, var(--linea-2)); }
+.tarjeta__foto { display: block; width: 100%; height: 100%; object-fit: cover; }
+.tarjeta--sin-foto .tarjeta__foto { display: none; }
+
+/* =====================================================================
+   Pantallas medianas y pequeñas
+   ===================================================================== */
+
+@media (max-width: 68rem) {
+  .reparto { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+  .contenido { padding: 2.4rem 2.2rem 3.5rem; }
+}
 @media (max-width: 56rem) {
-  .foto-banda img { border-width: 0.3rem; box-shadow: 0 0 0 1.5px var(--tinta), 3px 4px 0 var(--lavanda); }
-  .foto-banda__pie { font-size: 1.25rem; }
+  .rail { padding: 0.8rem 1rem 1rem; gap: 0.6rem; }
+  .rail[data-abierto="true"] nav { display: grid; gap: 0.9rem; }
+  .contenido { padding: 1.8rem 1rem 3rem; }
+  .guion__ficha { grid-template-columns: minmax(0, 1fr); }
+  .guion__ficha > div { border-right: 0; border-bottom: 1px solid var(--linea); }
+  .guion__ficha > div:last-child { border-bottom: 0; }
+  .tarjeta__marco { margin: 0 -1.25rem 1rem; }
+  .etiqueta { gap: 0.2rem 0.8rem; }
+}
+@media (max-width: 30rem) {
+  .reparto { grid-template-columns: minmax(0, 1fr); }
+}
+@media print {
+  .etiqueta__guion { display: none; }
 }
 
-/* Nueve apartados en el menú superior: la lista no tiene tope de ancho y las etiquetas se ajustan */
-.rail nav ul { max-width: none; }
-@media (min-width: 82.01rem) {
-  .rail nav a { padding: 0.4rem 0.7rem; font-size: 0.9rem; }
-}
+/* Recorrido de la portada: los siete pasos caben en una fila */
+.recorrido .pasos { grid-template-columns: repeat(auto-fit, minmax(6.3rem, 1fr)); }
+.rail__titulo span { font-family: var(--display); }
